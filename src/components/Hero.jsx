@@ -10,7 +10,7 @@ export default function Hero() {
 
     <section className="bg-[#fafafa] overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-6 py-4 grid lg:grid-cols-[0.9fr_1.3fr] items-center gap-0">
+      <div className="max-w-7xl mx-auto px-7 py-2 grid lg:grid-cols-[0.9fr_1.3fr] items-center gap-0">
 
         {/* LEFT CONTENT */}
         <div className="relative z-10">
@@ -43,9 +43,9 @@ export default function Hero() {
                 flex items-center gap-3
                 bg-indigo-500
                 text-white
-                px-8 py-5
+                px-7 py-3
                 rounded-2xl
-                text-lg
+                text-[14px]
                 font-semibold
                 shadow-xl
                 hover:scale-105
@@ -65,9 +65,9 @@ export default function Hero() {
                 flex items-center gap-3
                 border border-slate-300
                 bg-white
-                px-8 py-5
+                px-7 py-3
                 rounded-2xl
-                text-lg
+                text-[14px]
                 font-semibold
                 hover:border-indigo-500
                 hover:shadow-lg
@@ -84,13 +84,13 @@ export default function Hero() {
           </div>
 
           {/* MINI INFO */}
-          <div className="flex items-center gap-10 mt-10 text-slate-700 flex-wrap">
+          <div className="flex items-center gap-6 mt-10 text-slate-700 flex-wrap">
 
-            <div className="flex items-center gap-2 text-lg">
+            <div className="flex items-center gap-2 text-[14px]">
               🛡️ Verified Student Accounts
             </div>
 
-            <div className="flex items-center gap-2 text-lg">
+            <div className="flex items-center gap-2 text-[14px]">
               ⭐ Community Based Ratings
             </div>
 

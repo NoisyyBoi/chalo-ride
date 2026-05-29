@@ -19,14 +19,14 @@ export default function About() {
       <Navbar />
 
       {/* HERO */}
-      <section className="max-w-7xl mx-auto px-6 pt-24 pb-20">
+      <section className="max-w-7xl mx-auto px-7 pt-24 pb-20">
 
         <div className="text-center">
 
           <h1
             className="
-            text-5xl
-            md:text-6xl
+            text-3xl
+            md:text-3xl
             lg:text-7xl
             font-extrabold
             text-[#0F172A]
@@ -40,7 +40,7 @@ export default function About() {
             className="
             mt-6
             text-xl
-            md:text-2xl
+            md:text-xl
             text-slate-600
             max-w-4xl
             mx-auto
@@ -69,9 +69,9 @@ export default function About() {
 
             <h2
               className="
-              text-4xl
-              md:text-5xl
-              lg:text-6xl
+              text-3xl
+              md:text-3xl
+              lg:text-3xl
               font-extrabold
               leading-tight
               text-[#0F172A]
@@ -85,7 +85,7 @@ export default function About() {
             <p
               className="
               mt-10
-              text-lg
+              text-[14px]
               md:text-xl
               text-slate-600
               leading-relaxed
@@ -100,7 +100,7 @@ export default function About() {
             <p
               className="
               mt-8
-              text-lg
+              text-[14px]
               md:text-xl
               text-slate-600
               leading-relaxed
@@ -137,15 +137,15 @@ export default function About() {
       </section>
 
       {/* VALUES */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
+      <section className="max-w-7xl mx-auto px-7 py-24">
 
         <div className="text-center">
 
           <h2
             className="
-            text-4xl
-            md:text-5xl
-            lg:text-6xl
+            text-3xl
+            md:text-3xl
+            lg:text-3xl
             font-extrabold
             text-[#0F172A]
           "
@@ -157,7 +157,7 @@ export default function About() {
             className="
             mt-5
             text-xl
-            md:text-2xl
+            md:text-xl
             text-slate-500
           "
           >
@@ -171,7 +171,7 @@ export default function About() {
           className="
           grid
           md:grid-cols-3
-          gap-10
+          gap-6
           mt-20
         "
         >
@@ -214,7 +214,7 @@ export default function About() {
             <h3
               className="
               mt-10
-              text-3xl
+              text-xl
               font-bold
               text-[#0F172A]
             "
@@ -225,7 +225,7 @@ export default function About() {
             <p
               className="
               mt-6
-              text-lg
+              text-[14px]
               leading-relaxed
               text-slate-500
             "
@@ -274,7 +274,7 @@ export default function About() {
             <h3
               className="
               mt-10
-              text-3xl
+              text-xl
               font-bold
               text-[#0F172A]
             "
@@ -285,7 +285,7 @@ export default function About() {
             <p
               className="
               mt-6
-              text-lg
+              text-[14px]
               leading-relaxed
               text-slate-500
             "
@@ -334,7 +334,7 @@ export default function About() {
             <h3
               className="
               mt-10
-              text-3xl
+              text-xl
               font-bold
               text-[#0F172A]
             "
@@ -345,7 +345,7 @@ export default function About() {
             <p
               className="
               mt-6
-              text-lg
+              text-[14px]
               leading-relaxed
               text-slate-500
             "
@@ -365,7 +365,7 @@ export default function About() {
         className="
         max-w-7xl
         mx-auto
-        px-6
+        px-7
         py-24
       "
       >
@@ -400,9 +400,9 @@ export default function About() {
 
             <h2
               className="
-              text-4xl
-              md:text-5xl
-              lg:text-6xl
+              text-3xl
+              md:text-3xl
+              lg:text-3xl
               font-extrabold
               text-[#0F172A]
               leading-tight
@@ -414,7 +414,7 @@ export default function About() {
             <p
               className="
               mt-10
-              text-lg
+              text-[14px]
               md:text-xl
               text-slate-600
               leading-relaxed
@@ -428,7 +428,7 @@ export default function About() {
             <p
               className="
               mt-6
-              text-lg
+              text-[14px]
               md:text-xl
               text-slate-600
               leading-relaxed
@@ -450,7 +450,7 @@ export default function About() {
                 flex
                 items-center
                 gap-5
-                text-lg
+                text-[14px]
                 md:text-xl
                 text-slate-700
               "
@@ -469,7 +469,7 @@ export default function About() {
                 flex
                 items-center
                 gap-5
-                text-lg
+                text-[14px]
                 md:text-xl
                 text-slate-700
               "
@@ -488,7 +488,7 @@ export default function About() {
                 flex
                 items-center
                 gap-5
-                text-lg
+                text-[14px]
                 md:text-xl
                 text-slate-700
               "

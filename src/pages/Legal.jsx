@@ -22,13 +22,13 @@ export default function Legal() {
       {/* HERO */}
       <section className="bg-[#ecebff] pt-24 pb-16">
 
-        <div className="max-w-6xl mx-auto px-6 text-center">
+        <div className="max-w-6xl mx-auto px-7 text-center">
 
-          <h1 className="text-5xl md:text-6xl font-extrabold text-[#0F172A]">
+          <h1 className="text-3xl md:text-3xl font-extrabold text-[#0F172A]">
             Legal Information
           </h1>
 
-          <p className="mt-4 text-slate-500 text-lg">
+          <p className="mt-4 text-slate-500 text-[14px]">
             Terms of Service & Privacy Policy for College Students
           </p>
 
@@ -37,7 +37,7 @@ export default function Legal() {
       </section>
 
       {/* CONTENT */}
-      <section className="flex-1 max-w-6xl mx-auto w-full px-6 py-12">
+      <section className="flex-1 max-w-6xl mx-auto w-full px-7 py-12">
 
         <div className="bg-white rounded-[32px] shadow-lg border overflow-hidden">
 
@@ -46,7 +46,7 @@ export default function Legal() {
 
             <button
               onClick={() => setActiveTab("terms")}
-              className={`py-5 font-bold transition ${
+              className={`py-3 font-bold transition ${
                 activeTab === "terms"
                   ? "bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white"
                   : "text-slate-500 bg-white"
@@ -57,7 +57,7 @@ export default function Legal() {
 
             <button
               onClick={() => setActiveTab("privacy")}
-              className={`py-5 font-bold transition ${
+              className={`py-3 font-bold transition ${
                 activeTab === "privacy"
                   ? "bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white"
                   : "text-slate-500 bg-white"
@@ -69,7 +69,7 @@ export default function Legal() {
           </div>
 
           {/* BODY */}
-          <div className="p-8 md:p-14">
+          <div className="p-5 md:p-14">
 
             {/* TERMS TAB */}
             {activeTab === "terms" && (
@@ -95,7 +95,7 @@ export default function Legal() {
 
                 </div>
 
-                <p className="text-sm text-slate-400 mt-5">
+                <p className="text-base text-slate-400 mt-5">
                   Last Updated: January 2026
                 </p>
 
@@ -181,7 +181,7 @@ export default function Legal() {
 
                 </div>
 
-                <p className="text-sm text-slate-400 mt-5">
+                <p className="text-base text-slate-400 mt-5">
                   Last Updated: January 2026
                 </p>
 
@@ -264,7 +264,7 @@ function LegalSection({ title, points }) {
   return (
     <div>
 
-      <h2 className="text-3xl font-extrabold text-[#0F172A]">
+      <h2 className="text-xl font-extrabold text-[#0F172A]">
         {title}
       </h2>
 

@@ -17,7 +17,7 @@ export default function StatCard({
     >
       <div className="flex justify-between">
         <div
-          className={`w-14 h-14 rounded-full flex items-center justify-center text-2xl ${iconBg} ${iconColor}`}
+          className={`w-14 h-14 rounded-full flex items-center justify-center text-xl ${iconBg} ${iconColor}`}
         >
           {icon}
         </div>
@@ -30,9 +30,9 @@ export default function StatCard({
           {title}
         </p>
 
-        <h2 className="text-5xl font-bold mt-2">{value}</h2>
+        <h2 className="text-3xl font-bold mt-2">{value}</h2>
 
-        <p className="mt-3 text-sm">{growth}</p>
+        <p className="mt-3 text-base">{growth}</p>
       </div>
     </div>
   );

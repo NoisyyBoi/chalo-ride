@@ -77,12 +77,12 @@ export default function AdminVerifications() {
       {/* HEADER */}
       <div className="bg-white border-b">
 
-        <div className="max-w-[1400px] mx-auto px-8 py-5 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-7 py-3 flex items-center justify-between">
 
           {/* LOGO */}
           <div className="flex items-center gap-4">
 
-            <div className="w-14 h-14 rounded-full bg-gradient-to-r from-[#6366f1] to-[#ec4899] flex items-center justify-center text-white text-2xl shadow-lg">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-r from-[#6366f1] to-[#ec4899] flex items-center justify-center text-white text-xl shadow-lg">
 
               🛵
 
@@ -90,7 +90,7 @@ export default function AdminVerifications() {
 
             <div>
 
-              <h1 className="text-4xl font-bold">
+              <h1 className="text-3xl font-bold">
 
                 <span className="text-[#6366f1]">
 
@@ -113,7 +113,7 @@ export default function AdminVerifications() {
           {/* RIGHT */}
           <div className="flex items-center gap-5">
 
-            <div className="bg-[#f8fafc] px-5 py-3 rounded-2xl flex items-center gap-3 text-lg">
+            <div className="bg-[#f8fafc] px-7 py-3 rounded-2xl flex items-center gap-3 text-[14px]">
 
               <FiBell />
 
@@ -121,7 +121,7 @@ export default function AdminVerifications() {
 
             </div>
 
-            <button className="border px-6 py-3 rounded-2xl font-semibold">
+            <button className="border px-7 py-3 rounded-2xl font-semibold">
 
               Exit Admin
 
@@ -136,15 +136,15 @@ export default function AdminVerifications() {
       {/* TITLE */}
       <div className="bg-white border-b">
 
-        <div className="max-w-[1400px] mx-auto px-8 py-8">
+        <div className="max-w-[1400px] mx-auto px-7 py-3">
 
           <div className="flex items-center gap-5">
 
-            <FiGrid className="text-5xl text-[#6366f1]" />
+            <FiGrid className="text-3xl text-[#6366f1]" />
 
             <div>
 
-              <h1 className="text-5xl font-bold text-[#1e293b]">
+              <h1 className="text-3xl font-bold text-[#1e293b]">
 
                 Admin Dashboard
 
@@ -165,7 +165,7 @@ export default function AdminVerifications() {
       </div>
 
       {/* NAVIGATION */}
-      <div className="max-w-[1400px] mx-auto px-8 pt-8">
+      <div className="max-w-[1400px] mx-auto px-7 pt-8">
 
         <div className="bg-white rounded-[32px] border p-4 flex justify-between">
 
@@ -174,7 +174,7 @@ export default function AdminVerifications() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
+            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
 
               <FiGrid />
 
@@ -189,7 +189,7 @@ export default function AdminVerifications() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl bg-[#7c7df6] text-white flex items-center justify-center gap-3 text-xl font-semibold shadow-lg">
+            <button className="w-full py-3 rounded-2xl bg-[#7c7df6] text-white flex items-center justify-center gap-3 text-xl font-semibold shadow-lg">
 
               <FiShield />
 
@@ -204,7 +204,7 @@ export default function AdminVerifications() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
+            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
 
               <FiUsers />
 
@@ -219,7 +219,7 @@ export default function AdminVerifications() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
+            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
 
               <FiAlertTriangle />
 
@@ -234,7 +234,7 @@ export default function AdminVerifications() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
+            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
 
               <FiBarChart2 />
 
@@ -249,12 +249,12 @@ export default function AdminVerifications() {
       </div>
 
       {/* CONTENT */}
-      <div className="max-w-[1400px] mx-auto px-8 py-10">
+      <div className="max-w-[1400px] mx-auto px-7 py-10">
 
         {/* TOP */}
         <div className="flex items-center justify-between mb-10">
 
-          <h1 className="text-5xl font-bold text-[#1e293b]">
+          <h1 className="text-3xl font-bold text-[#1e293b]">
 
             Student Verifications
 
@@ -262,7 +262,7 @@ export default function AdminVerifications() {
 
           <div className="flex gap-4">
 
-            <button className="bg-white border px-6 py-4 rounded-2xl flex items-center gap-3 text-lg font-semibold">
+            <button className="bg-white border px-7 py-2 rounded-2xl flex items-center gap-3 text-[14px] font-semibold">
 
               <FiFilter />
 
@@ -270,7 +270,7 @@ export default function AdminVerifications() {
 
             </button>
 
-            <button className="bg-[#7c7df6] text-white px-6 py-4 rounded-2xl flex items-center gap-3 text-lg font-semibold">
+            <button className="bg-[#7c7df6] text-white px-7 py-2 rounded-2xl flex items-center gap-3 text-[14px] font-semibold">
 
               <FiDownload />
 
@@ -289,14 +289,14 @@ export default function AdminVerifications() {
 
             <div
               key={user._id}
-              className="bg-white rounded-[40px] border border-gray-200 p-8 flex items-center justify-between"
+              className="bg-white rounded-[40px] border border-gray-200 p-5 flex items-center justify-between"
             >
 
               {/* LEFT */}
-              <div className="flex items-start gap-8 flex-1">
+              <div className="flex items-start gap-5 flex-1">
 
                 {/* AVATAR */}
-                <div className="w-24 h-24 rounded-full bg-[#f3e8ff] flex items-center justify-center text-[#6366f1] text-5xl font-bold">
+                <div className="w-24 h-24 rounded-full bg-[#f3e8ff] flex items-center justify-center text-[#6366f1] text-3xl font-bold">
 
                   {user.name.charAt(0)}
 
@@ -307,7 +307,7 @@ export default function AdminVerifications() {
 
                   <div className="flex items-center gap-5 mb-4">
 
-                    <h2 className="text-4xl font-bold text-[#1e293b]">
+                    <h2 className="text-3xl font-bold text-[#1e293b]">
 
                       {user.name}
 
@@ -315,7 +315,7 @@ export default function AdminVerifications() {
 
                     {!user.isVerified && (
 
-                      <span className="bg-[#fef3c7] text-[#d97706] px-5 py-2 rounded-full text-base font-semibold">
+                      <span className="bg-[#fef3c7] text-[#d97706] px-7 py-2 rounded-full text-[14px] font-semibold">
 
                         Pending Review
 
@@ -358,12 +358,12 @@ export default function AdminVerifications() {
               </div>
 
               {/* RIGHT */}
-              <div className="flex items-center gap-10">
+              <div className="flex items-center gap-6">
 
                 {/* IMAGE */}
                 <div className="text-center">
 
-                  <p className="text-gray-500 text-lg mb-4">
+                  <p className="text-gray-500 text-[14px] mb-4">
 
                     Student ID Proof
 
@@ -405,7 +405,7 @@ export default function AdminVerifications() {
 
                   {user.isVerified ? (
 
-                    <button className="bg-green-100 text-green-600 px-10 py-5 rounded-2xl text-2xl font-bold w-56">
+                    <button className="bg-green-100 text-green-600 px-10 py-3 rounded-2xl text-xl font-bold w-56">
 
                       Verified
 
@@ -417,7 +417,7 @@ export default function AdminVerifications() {
                       onClick={() =>
                         verifyUser(user._id)
                       }
-                      className="bg-[#4ade80] hover:bg-[#22c55e] text-white px-10 py-5 rounded-2xl text-2xl font-bold w-56"
+                      className="bg-[#4ade80] hover:bg-[#22c55e] text-white px-10 py-3 rounded-2xl text-xl font-bold w-56"
                     >
 
                       ✓ Approve
@@ -426,7 +426,7 @@ export default function AdminVerifications() {
 
                   )}
 
-                  <button className="border border-red-300 text-red-500 px-10 py-5 rounded-2xl text-2xl font-bold w-56">
+                  <button className="border border-red-300 text-red-500 px-10 py-3 rounded-2xl text-xl font-bold w-56">
 
                     ✕ Reject
 
@@ -455,7 +455,7 @@ export default function AdminVerifications() {
               onClick={() =>
                 setPreviewImage(null)
               }
-              className="absolute -top-5 -right-5 bg-white w-14 h-14 rounded-full text-3xl font-bold shadow-lg"
+              className="absolute -top-5 -right-5 bg-white w-14 h-14 rounded-full text-xl font-bold shadow-lg"
             >
 
               ×

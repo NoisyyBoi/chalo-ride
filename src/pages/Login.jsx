@@ -96,7 +96,7 @@ export default function Login() {
         flex
         items-center
         justify-between
-        px-8
+        px-7
       ">
 
         <div className="flex items-center gap-3">
@@ -117,7 +117,7 @@ export default function Login() {
             🛵
           </div>
 
-          <h1 className="text-4xl font-bold">
+          <h1 className="text-3xl font-bold">
 
             <span className="text-indigo-500">
               Chalo
@@ -164,7 +164,7 @@ export default function Login() {
             flex
             items-center
             justify-center
-            text-5xl
+            text-3xl
           ">
             🚖
           </div>
@@ -180,7 +180,7 @@ export default function Login() {
 
           <p className="
             mt-10
-            text-2xl
+            text-xl
             leading-[45px]
             text-indigo-100
           ">
@@ -192,7 +192,7 @@ export default function Login() {
           <div className="
             mt-16
             space-y-8
-            text-2xl
+            text-xl
           ">
 
             <div className="flex items-center gap-5">
@@ -232,7 +232,7 @@ export default function Login() {
 
             <div>
 
-              <h3 className="text-5xl font-bold">
+              <h3 className="text-3xl font-bold">
                 5000+
               </h3>
 
@@ -244,7 +244,7 @@ export default function Login() {
 
             <div>
 
-              <h3 className="text-5xl font-bold">
+              <h3 className="text-3xl font-bold">
                 4.8★
               </h3>
 
@@ -268,7 +268,7 @@ export default function Login() {
         ">
 
           <h2 className="
-            text-6xl
+            text-3xl
             font-bold
             text-[#0F172A]
           ">
@@ -306,8 +306,8 @@ export default function Login() {
                   rounded-2xl
                   border
                   ${errors.email ? "border-red-500" : "border-slate-200"}
-                  px-5
-                  text-lg
+                  px-7
+                  text-[14px]
                   outline-none
                   focus:border-indigo-500
                 `}
@@ -362,8 +362,8 @@ export default function Login() {
                   rounded-2xl
                   border
                   ${errors.password ? "border-red-500" : "border-slate-200"}
-                  px-5
-                  text-lg
+                  px-7
+                  text-[14px]
                   outline-none
                   focus:border-indigo-500
                 `}
@@ -469,14 +469,14 @@ export default function Login() {
                 items-center
                 justify-center
                 gap-4
-                text-lg
+                text-[14px]
                 font-semibold
                 hover:bg-slate-50
                 duration-300
               "
             >
 
-              <FcGoogle className="text-3xl" />
+              <FcGoogle className="text-xl" />
 
               Continue with Google
 

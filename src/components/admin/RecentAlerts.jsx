@@ -1,7 +1,7 @@
 export default function RecentAlerts() {
   return (
     <div className="bg-white border rounded-3xl p-6">
-      <h2 className="text-3xl font-bold mb-6">
+      <h2 className="text-xl font-bold mb-6">
         Recent Alerts
       </h2>
 

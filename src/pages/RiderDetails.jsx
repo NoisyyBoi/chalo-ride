@@ -51,7 +51,7 @@ export default function RiderDetails() {
   if (!ride) {
 
     return (
-      <div className="p-10 text-3xl">
+      <div className="p-6 text-xl">
         Loading...
       </div>
     );
@@ -60,14 +60,14 @@ export default function RiderDetails() {
 
   return (
 
-    <div className="min-h-screen bg-[#f5f7fb] p-10">
+    <div className="min-h-screen bg-[#f5f7fb] p-6">
 
-      <div className="bg-white rounded-[40px] p-10 border">
+      <div className="bg-white rounded-[40px] p-6 border">
 
         {/* TOP */}
         <div className="flex items-center gap-6 mb-10">
 
-          <div className="w-24 h-24 rounded-full bg-[#f3e8ff] flex items-center justify-center text-[#6366f1] text-5xl font-bold">
+          <div className="w-24 h-24 rounded-full bg-[#f3e8ff] flex items-center justify-center text-[#6366f1] text-3xl font-bold">
 
             {
               ride.driver?.name
@@ -78,7 +78,7 @@ export default function RiderDetails() {
 
           <div>
 
-            <h1 className="text-5xl font-bold text-[#1e293b]">
+            <h1 className="text-3xl font-bold text-[#1e293b]">
 
               {
                 ride.driver?.name
@@ -99,15 +99,15 @@ export default function RiderDetails() {
         </div>
 
         {/* DETAILS */}
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-5">
 
-          <div className="bg-[#f8fafc] rounded-3xl p-8">
+          <div className="bg-[#f8fafc] rounded-3xl p-5">
 
             <div className="flex items-center gap-4 mb-5">
 
-              <FiMapPin className="text-3xl text-[#6366f1]" />
+              <FiMapPin className="text-xl text-[#6366f1]" />
 
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-xl font-bold">
 
                 Route
 
@@ -143,13 +143,13 @@ export default function RiderDetails() {
 
           </div>
 
-          <div className="bg-[#f8fafc] rounded-3xl p-8">
+          <div className="bg-[#f8fafc] rounded-3xl p-5">
 
             <div className="flex items-center gap-4 mb-5">
 
-              <FiTruck className="text-3xl text-[#6366f1]" />
+              <FiTruck className="text-xl text-[#6366f1]" />
 
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-xl font-bold">
 
                 Vehicle
 
@@ -165,13 +165,13 @@ export default function RiderDetails() {
 
           </div>
 
-          <div className="bg-[#f8fafc] rounded-3xl p-8">
+          <div className="bg-[#f8fafc] rounded-3xl p-5">
 
             <div className="flex items-center gap-4 mb-5">
 
-              <FiClock className="text-3xl text-[#6366f1]" />
+              <FiClock className="text-xl text-[#6366f1]" />
 
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-xl font-bold">
 
                 Time
 
@@ -187,13 +187,13 @@ export default function RiderDetails() {
 
           </div>
 
-          <div className="bg-[#f8fafc] rounded-3xl p-8">
+          <div className="bg-[#f8fafc] rounded-3xl p-5">
 
             <div className="flex items-center gap-4 mb-5">
 
-              <FiUsers className="text-3xl text-[#6366f1]" />
+              <FiUsers className="text-xl text-[#6366f1]" />
 
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-xl font-bold">
 
                 Seats
 
@@ -209,13 +209,13 @@ export default function RiderDetails() {
 
           </div>
 
-          <div className="bg-[#f8fafc] rounded-3xl p-8 col-span-2">
+          <div className="bg-[#f8fafc] rounded-3xl p-5 col-span-2">
 
             <div className="flex items-center gap-4 mb-5">
 
-              <FiDollarSign className="text-3xl text-[#6366f1]" />
+              <FiDollarSign className="text-xl text-[#6366f1]" />
 
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-xl font-bold">
 
                 Fare
 
@@ -223,7 +223,7 @@ export default function RiderDetails() {
 
             </div>
 
-            <p className="text-5xl font-bold text-[#6366f1]">
+            <p className="text-3xl font-bold text-[#6366f1]">
 
               ₹{ride.fare}
 

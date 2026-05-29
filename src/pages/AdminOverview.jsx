@@ -17,7 +17,7 @@ export default function AdminOverview() {
       <AdminHeader />
       <DashboardTabs active="overview" />
 
-      <div className="p-8">
+      <div className="p-5">
         {/* Cards */}
         <div className="grid grid-cols-4 gap-6">
           <StatCard

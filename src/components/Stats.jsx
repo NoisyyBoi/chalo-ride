@@ -20,17 +20,17 @@ export default function Stats() {
   return (
     <section className="py-10 bg-white">
 
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-center">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 text-center">
 
         {stats.map((item, index) => (
 
           <div key={index}>
 
-            <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-100 flex items-center justify-center text-2xl">
+            <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-100 flex items-center justify-center text-xl">
               🚖
             </div>
 
-            <h2 className="text-4xl font-bold mt-5">
+            <h2 className="text-3xl font-bold mt-5">
               {item.number}
             </h2>
 

@@ -50,14 +50,14 @@ export default function AdminEarnings() {
 
       <DashboardTabs active="earnings" />
 
-      <div className="px-8 py-6">
+      <div className="px-7 py-6">
         {/* Top */}
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-5xl font-bold text-[#1e293b]">
+          <h1 className="text-3xl font-bold text-[#1e293b]">
             Platform Earnings
           </h1>
 
-          <button className="bg-[#6366f1] text-white px-6 py-3 rounded-2xl flex items-center gap-3 font-semibold">
+          <button className="bg-[#6366f1] text-white px-7 py-3 rounded-2xl flex items-center gap-3 font-semibold">
             <FiDownload />
             Export Report
           </button>
@@ -66,54 +66,54 @@ export default function AdminEarnings() {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-6 mb-8">
           {/* Card 1 */}
-          <div className="bg-white border rounded-[32px] p-8">
-            <div className="w-16 h-16 rounded-full bg-[#eef2ff] flex items-center justify-center text-[#6366f1] text-3xl mb-6">
+          <div className="bg-white border rounded-[32px] p-5">
+            <div className="w-16 h-16 rounded-full bg-[#eef2ff] flex items-center justify-center text-[#6366f1] text-xl mb-6">
               <FiDollarSign />
             </div>
 
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-[14px]">
               Total Revenue
             </p>
 
-            <h2 className="text-6xl font-bold text-[#1e293b] mt-3">
+            <h2 className="text-3xl font-bold text-[#1e293b] mt-3">
               ₹2,60,000
             </h2>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-white border rounded-[32px] p-8">
-            <div className="w-16 h-16 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#16a34a] text-3xl mb-6">
+          <div className="bg-white border rounded-[32px] p-5">
+            <div className="w-16 h-16 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#16a34a] text-xl mb-6">
               <FiTrendingUp />
             </div>
 
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-[14px]">
               Average per Ride
             </p>
 
-            <h2 className="text-6xl font-bold text-[#1e293b] mt-3">
+            <h2 className="text-3xl font-bold text-[#1e293b] mt-3">
               ₹28
             </h2>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-white border rounded-[32px] p-8">
-            <div className="w-16 h-16 rounded-full bg-[#dbeafe] flex items-center justify-center text-[#2563eb] text-3xl mb-6">
+          <div className="bg-white border rounded-[32px] p-5">
+            <div className="w-16 h-16 rounded-full bg-[#dbeafe] flex items-center justify-center text-[#2563eb] text-xl mb-6">
               <FiBarChart2 />
             </div>
 
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-[14px]">
               Total Rides
             </p>
 
-            <h2 className="text-6xl font-bold text-[#1e293b] mt-3">
+            <h2 className="text-3xl font-bold text-[#1e293b] mt-3">
               9,660
             </h2>
           </div>
         </div>
 
         {/* Monthly Trend */}
-        <div className="bg-white border rounded-[32px] p-8 mb-8">
-          <h2 className="text-3xl font-bold text-[#1e293b] mb-8">
+        <div className="bg-white border rounded-[32px] p-5 mb-8">
+          <h2 className="text-xl font-bold text-[#1e293b] mb-8">
             Monthly Earnings Trend
           </h2>
 
@@ -121,7 +121,7 @@ export default function AdminEarnings() {
             {monthlyData.map((item, index) => (
               <div key={index}>
                 <div className="flex justify-between mb-3">
-                  <p className="font-semibold text-lg">
+                  <p className="font-semibold text-[14px]">
                     {item.month}
                   </p>
 
@@ -148,8 +148,8 @@ export default function AdminEarnings() {
         </div>
 
         {/* Top Riders */}
-        <div className="bg-white border rounded-[32px] p-8">
-          <h2 className="text-3xl font-bold text-[#1e293b] mb-8">
+        <div className="bg-white border rounded-[32px] p-5">
+          <h2 className="text-xl font-bold text-[#1e293b] mb-8">
             Top Earning Riders
           </h2>
 
@@ -157,11 +157,11 @@ export default function AdminEarnings() {
             {topRiders.map((rider, index) => (
               <div
                 key={index}
-                className="bg-[#f8fafc] rounded-2xl px-6 py-5 flex justify-between items-center"
+                className="bg-[#f8fafc] rounded-2xl px-7 py-3 flex justify-between items-center"
               >
                 <div className="flex items-center gap-5">
                   {/* Rank */}
-                  <div className="w-14 h-14 rounded-full bg-[#7c6cf2] text-white flex items-center justify-center font-bold text-lg">
+                  <div className="w-14 h-14 rounded-full bg-[#7c6cf2] text-white flex items-center justify-center font-bold text-[14px]">
                     {rider.rank}
                   </div>
 
@@ -178,7 +178,7 @@ export default function AdminEarnings() {
                 </div>
 
                 {/* Earnings */}
-                <p className="text-3xl font-bold text-[#6366f1]">
+                <p className="text-xl font-bold text-[#6366f1]">
                   {rider.earnings}
                 </p>
               </div>

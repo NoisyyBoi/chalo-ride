@@ -44,14 +44,14 @@ export default function AdminComplaints() {
 
       <DashboardTabs active="complaints" />
 
-      <div className="px-8 py-6">
+      <div className="px-7 py-6">
         {/* Top */}
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-5xl font-bold text-[#1e293b]">
+          <h1 className="text-3xl font-bold text-[#1e293b]">
             Complaints Management
           </h1>
 
-          <button className="bg-white border rounded-2xl px-6 py-3 flex items-center gap-2 font-semibold">
+          <button className="bg-white border rounded-2xl px-7 py-3 flex items-center gap-2 font-semibold">
             <FiFilter />
             Filter by Priority
           </button>
@@ -62,16 +62,16 @@ export default function AdminComplaints() {
           {complaints.map((complaint, index) => (
             <div
               key={index}
-              className="bg-white border rounded-[32px] p-8 flex justify-between gap-10"
+              className="bg-white border rounded-[32px] p-5 flex justify-between gap-6"
             >
               {/* Left */}
               <div className="flex-1">
-                <h2 className="text-3xl font-bold text-[#1e293b] mb-6">
+                <h2 className="text-xl font-bold text-[#1e293b] mb-6">
                   {complaint.title}
                 </h2>
 
                 {/* Users */}
-                <div className="grid grid-cols-2 gap-10 mb-6">
+                <div className="grid grid-cols-2 gap-6 mb-6">
                   <div>
                     <p className="text-gray-500 mb-1">
                       Reported By:
@@ -111,17 +111,17 @@ export default function AdminComplaints() {
 
               {/* Right Buttons */}
               <div className="flex flex-col gap-4 min-w-[220px]">
-                <button className="bg-[#8b5cf6] text-white px-6 py-4 rounded-2xl flex items-center justify-center gap-3 font-semibold text-lg">
+                <button className="bg-[#8b5cf6] text-white px-7 py-2 rounded-2xl flex items-center justify-center gap-3 font-semibold text-[14px]">
                   <FiEye />
                   Investigate
                 </button>
 
-                <button className="bg-[#dcfce7] text-[#16a34a] px-6 py-4 rounded-2xl flex items-center justify-center gap-3 font-semibold text-lg">
+                <button className="bg-[#dcfce7] text-[#16a34a] px-7 py-2 rounded-2xl flex items-center justify-center gap-3 font-semibold text-[14px]">
                   <FiCheck />
                   Resolve
                 </button>
 
-                <button className="bg-[#fee2e2] text-[#dc2626] px-6 py-4 rounded-2xl flex items-center justify-center gap-3 font-semibold text-lg">
+                <button className="bg-[#fee2e2] text-[#dc2626] px-7 py-2 rounded-2xl flex items-center justify-center gap-3 font-semibold text-[14px]">
                   <FiUserX />
                   Suspend User
                 </button>

@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0f172a] text-white pt-24 pb-10">
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-16">
+      <div className="max-w-7xl mx-auto px-7 grid md:grid-cols-4 gap-16">
 
         {/* BRAND */}
         <div>
@@ -25,7 +25,7 @@ export default function Footer() {
               🛵
             </div>
 
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-xl font-bold">
               ChaloRide
             </h2>
 

@@ -216,7 +216,7 @@ export default function Signup() {
 
   <div className="min-h-screen bg-[#f8fafc]">
       {/* HEADER */}
-      <div className="border-b bg-white h-20 flex items-center justify-between px-8">
+      <div className="border-b bg-white h-20 flex items-center justify-between px-7">
 
         <div className="flex items-center gap-3">
 
@@ -237,7 +237,7 @@ export default function Signup() {
             🛵
           </div>
 
-          <h1 className="text-4xl font-bold">
+          <h1 className="text-3xl font-bold">
 
             <span className="text-indigo-500">
               Chalo
@@ -284,7 +284,7 @@ export default function Signup() {
             flex
             items-center
             justify-center
-            text-5xl
+            text-3xl
           ">
             👨‍🎓
           </div>
@@ -300,7 +300,7 @@ export default function Signup() {
 
           <p className="
             mt-10
-            text-2xl
+            text-xl
             leading-[45px]
             text-indigo-100
           ">
@@ -312,7 +312,7 @@ export default function Signup() {
           <div className="
             mt-16
             space-y-8
-            text-2xl
+            text-xl
           ">
 
             <div className="flex items-center gap-5">
@@ -352,7 +352,7 @@ export default function Signup() {
 
             <div>
 
-              <h3 className="text-5xl font-bold">
+              <h3 className="text-3xl font-bold">
                 5000+
               </h3>
 
@@ -364,7 +364,7 @@ export default function Signup() {
 
             <div>
 
-              <h3 className="text-5xl font-bold">
+              <h3 className="text-3xl font-bold">
                 4.8★
               </h3>
 
@@ -388,7 +388,7 @@ export default function Signup() {
         ">
 
           <h2 className="
-            text-6xl
+            text-3xl
             font-bold
             text-[#0F172A]
           ">
@@ -429,8 +429,8 @@ export default function Signup() {
                     rounded-2xl
                     border
                     ${errors.name ? "border-red-500" : "border-slate-200"}
-                    px-5
-                    text-lg
+                    px-7
+                    text-[14px]
                     outline-none
                     focus:border-indigo-500
                   `}
@@ -491,8 +491,8 @@ export default function Signup() {
                     rounded-2xl
                     border
                     ${errors.phone ? "border-red-500" : "border-slate-200"}
-                    px-5
-                    text-lg
+                    px-7
+                    text-[14px]
                     outline-none
                     focus:border-indigo-500
                   `}
@@ -536,8 +536,8 @@ export default function Signup() {
                   rounded-2xl
                   border
                   ${errors.registerNumber ? "border-red-500" : "border-slate-200"}
-                  px-5
-                  text-lg
+                  px-7
+                  text-[14px]
                   outline-none
                   focus:border-indigo-500
                 `}
@@ -587,8 +587,8 @@ export default function Signup() {
                   rounded-2xl
                   border
                   ${errors.email ? "border-red-500" : "border-slate-200"}
-                  px-5
-                  text-lg
+                  px-7
+                  text-[14px]
                   outline-none
                   focus:border-indigo-500
                 `}
@@ -648,8 +648,8 @@ export default function Signup() {
                     rounded-2xl
                     border
                     ${errors.department ? "border-red-500" : "border-slate-200"}
-                    px-5
-                    text-lg
+                    px-7
+                    text-[14px]
                     outline-none
                     focus:border-indigo-500
                   `}
@@ -695,8 +695,8 @@ export default function Signup() {
                     rounded-2xl
                     border
                     ${errors.year ? "border-red-500" : "border-slate-200"}
-                    px-5
-                    text-lg
+                    px-7
+                    text-[14px]
                     outline-none
                     focus:border-indigo-500
                   `}
@@ -754,8 +754,8 @@ export default function Signup() {
                     rounded-2xl
                     border
                     ${errors.password ? "border-red-500" : "border-slate-200"}
-                    px-5
-                    text-lg
+                    px-7
+                    text-[14px]
                     outline-none
                     focus:border-indigo-500
                   `}
@@ -794,8 +794,8 @@ export default function Signup() {
                     rounded-2xl
                     border
                     ${errors.confirmPassword ? "border-red-500" : "border-slate-200"}
-                    px-5
-                    text-lg
+                    px-7
+                    text-[14px]
                     outline-none
                     focus:border-indigo-500
                   `}
@@ -841,13 +841,13 @@ export default function Signup() {
               ">
 
                 <FiUploadCloud className="
-                  text-6xl
+                  text-3xl
                   text-indigo-500
                 " />
 
                 <h3 className="
                   mt-6
-                  text-2xl
+                  text-xl
                   font-bold
                 ">
                   Upload Student ID or College Proof
@@ -871,7 +871,7 @@ export default function Signup() {
                     py-2
                     bg-slate-100
                     rounded-full
-                    text-sm
+                    text-base
                   ">
                     JPG
                   </span>
@@ -881,7 +881,7 @@ export default function Signup() {
                     py-2
                     bg-slate-100
                     rounded-full
-                    text-sm
+                    text-base
                   ">
                     PNG
                   </span>
@@ -891,7 +891,7 @@ export default function Signup() {
                     py-2
                     bg-slate-100
                     rounded-full
-                    text-sm
+                    text-base
                   ">
                     PDF
                   </span>
@@ -937,7 +937,7 @@ export default function Signup() {
             </div>
 
             {/* TERMS */}
-            <p className="text-slate-500 text-lg">
+            <p className="text-slate-500 text-[14px]">
 
               I agree to ChaloRide's{" "}
 

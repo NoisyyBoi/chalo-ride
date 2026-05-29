@@ -56,18 +56,18 @@ export default function AdminRiders() {
       {/* TOP NAVBAR */}
       <div className="bg-white border-b">
 
-        <div className="max-w-[1400px] mx-auto px-8 py-5 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-7 py-3 flex items-center justify-between">
 
           {/* LOGO */}
           <div className="flex items-center gap-4">
 
-            <div className="w-14 h-14 rounded-full bg-gradient-to-r from-[#6366f1] to-[#ec4899] flex items-center justify-center text-white text-2xl shadow-lg">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-r from-[#6366f1] to-[#ec4899] flex items-center justify-center text-white text-xl shadow-lg">
 
               🛵
 
             </div>
 
-            <h1 className="text-4xl font-bold">
+            <h1 className="text-3xl font-bold">
 
               <span className="text-[#6366f1]">
 
@@ -92,16 +92,16 @@ export default function AdminRiders() {
       {/* DASHBOARD HEADER */}
       <div className="bg-white border-b">
 
-        <div className="max-w-[1400px] mx-auto px-8 py-8 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-7 py-3 flex items-center justify-between">
 
           {/* LEFT */}
           <div className="flex items-center gap-5">
 
-            <FiGrid className="text-5xl text-[#6366f1]" />
+            <FiGrid className="text-3xl text-[#6366f1]" />
 
             <div>
 
-              <h1 className="text-5xl font-bold text-[#1e293b]">
+              <h1 className="text-3xl font-bold text-[#1e293b]">
 
                 Admin Dashboard
 
@@ -120,7 +120,7 @@ export default function AdminRiders() {
           {/* RIGHT */}
           <div className="flex items-center gap-5">
 
-            <div className="bg-[#f8fafc] px-5 py-3 rounded-2xl flex items-center gap-3 text-lg">
+            <div className="bg-[#f8fafc] px-7 py-3 rounded-2xl flex items-center gap-3 text-[14px]">
 
               <FiBell />
 
@@ -128,7 +128,7 @@ export default function AdminRiders() {
 
             </div>
 
-            <button className="border px-6 py-3 rounded-2xl font-semibold">
+            <button className="border px-7 py-3 rounded-2xl font-semibold">
 
               Exit Admin
 
@@ -141,7 +141,7 @@ export default function AdminRiders() {
       </div>
 
       {/* NAVIGATION */}
-      <div className="max-w-[1400px] mx-auto px-8 pt-8">
+      <div className="max-w-[1400px] mx-auto px-7 pt-8">
 
         <div className="bg-white rounded-[32px] border p-4 flex justify-between">
 
@@ -150,7 +150,7 @@ export default function AdminRiders() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
+            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
 
               <FiGrid />
 
@@ -165,7 +165,7 @@ export default function AdminRiders() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
+            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
 
               <FiShield />
 
@@ -180,7 +180,7 @@ export default function AdminRiders() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl bg-[#7c7df6] text-white flex items-center justify-center gap-3 text-xl font-semibold shadow-lg">
+            <button className="w-full py-3 rounded-2xl bg-[#7c7df6] text-white flex items-center justify-center gap-3 text-xl font-semibold shadow-lg">
 
               <FiUsers />
 
@@ -195,7 +195,7 @@ export default function AdminRiders() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
+            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
 
               <FiAlertTriangle />
 
@@ -210,7 +210,7 @@ export default function AdminRiders() {
             className="flex-1"
           >
 
-            <button className="w-full py-5 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
+            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-3 text-gray-500 text-xl font-semibold">
 
               <FiBarChart2 />
 
@@ -225,12 +225,12 @@ export default function AdminRiders() {
       </div>
 
       {/* CONTENT */}
-      <div className="max-w-[1400px] mx-auto px-8 py-10">
+      <div className="max-w-[1400px] mx-auto px-7 py-10">
 
         {/* TOP */}
         <div className="flex items-center justify-between mb-8">
 
-          <h1 className="text-5xl font-bold text-[#1e293b]">
+          <h1 className="text-3xl font-bold text-[#1e293b]">
 
             Active Riders
 
@@ -239,7 +239,7 @@ export default function AdminRiders() {
           <div className="flex gap-4">
 
             {/* SEARCH */}
-            <div className="bg-white border rounded-2xl px-5 py-4 flex items-center gap-3 w-[320px]">
+            <div className="bg-white border rounded-2xl px-7 py-2 flex items-center gap-3 w-[320px]">
 
               <FiSearch className="text-gray-400 text-xl" />
 
@@ -252,7 +252,7 @@ export default function AdminRiders() {
             </div>
 
             {/* FILTER */}
-            <button className="bg-white border px-6 py-4 rounded-2xl flex items-center gap-3 text-lg font-semibold">
+            <button className="bg-white border px-7 py-2 rounded-2xl flex items-center gap-3 text-[14px] font-semibold">
 
               <FiFilter />
 
@@ -268,7 +268,7 @@ export default function AdminRiders() {
         <div className="bg-white rounded-[36px] border overflow-hidden">
 
           {/* HEADER */}
-          <div className="grid grid-cols-7 gap-4 px-10 py-6 bg-[#f8fafc] font-bold text-[#1e293b] text-lg">
+          <div className="grid grid-cols-7 gap-4 px-10 py-6 bg-[#f8fafc] font-bold text-[#1e293b] text-[14px]">
 
             <p>Rider</p>
 
@@ -291,13 +291,13 @@ export default function AdminRiders() {
 
             <div
               key={ride._id}
-              className="grid grid-cols-7 gap-4 px-10 py-8 border-t items-center"
+              className="grid grid-cols-7 gap-4 px-10 py-3 border-t items-center"
             >
 
               {/* RIDER */}
               <div className="flex items-center gap-4">
 
-                <div className="w-14 h-14 rounded-full bg-[#f3e8ff] flex items-center justify-center text-[#6366f1] font-bold text-2xl">
+                <div className="w-14 h-14 rounded-full bg-[#f3e8ff] flex items-center justify-center text-[#6366f1] font-bold text-xl">
 
                   {
                     ride.driver?.name
@@ -308,7 +308,7 @@ export default function AdminRiders() {
 
                 <div>
 
-                  <h2 className="font-bold text-lg text-[#1e293b]">
+                  <h2 className="font-bold text-[14px] text-[#1e293b]">
 
                     {
                       ride.driver?.name
@@ -316,7 +316,7 @@ export default function AdminRiders() {
 
                   </h2>
 
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-gray-500 text-base">
 
                     {
                       ride.driver?.email
@@ -360,7 +360,7 @@ export default function AdminRiders() {
 
                 </p>
 
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 text-base">
 
                   Seats:
                   {" "}
@@ -393,7 +393,7 @@ export default function AdminRiders() {
               {/* STATUS */}
               <div>
 
-                <span className="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold">
+                <span className="bg-green-100 text-green-600 px-4 py-2 rounded-full text-base font-semibold">
 
                   Active
 
@@ -408,7 +408,7 @@ export default function AdminRiders() {
                 to={`/admin/riders/${ride._id}`}
               >
 
-                <button className="bg-[#eef2ff] text-[#6366f1] px-5 py-3 rounded-2xl font-semibold">
+                <button className="bg-[#eef2ff] text-[#6366f1] px-7 py-3 rounded-2xl font-semibold">
 
                   View Details
 

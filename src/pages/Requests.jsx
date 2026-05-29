@@ -24,16 +24,16 @@ export default function Requests() {
       <Navbar />
 
       {/* Main */}
-      <div className="max-w-7xl mx-auto px-6 py-14">
+      <div className="max-w-7xl mx-auto px-7 py-14">
 
         {/* Heading */}
         <div className="mb-12">
 
-          <h1 className="text-6xl font-bold text-[#1e293b] mb-4">
+          <h1 className="text-3xl font-bold text-[#1e293b] mb-4">
             Ride Requests
           </h1>
 
-          <p className="text-gray-500 text-2xl">
+          <p className="text-gray-500 text-xl">
             Manage incoming ride requests from students
           </p>
 
@@ -43,7 +43,7 @@ export default function Requests() {
         <div className="grid grid-cols-3 gap-6 mb-14">
 
           {/* Pending */}
-          <div className="bg-white border rounded-[32px] p-8 flex justify-between items-center">
+          <div className="bg-white border rounded-[32px] p-5 flex justify-between items-center">
 
             <div>
 
@@ -51,20 +51,20 @@ export default function Requests() {
                 Pending Requests
               </p>
 
-              <h2 className="text-6xl font-bold text-[#6366f1]">
+              <h2 className="text-3xl font-bold text-[#6366f1]">
                 1
               </h2>
 
             </div>
 
-            <div className="w-20 h-20 rounded-full bg-[#eef2ff] flex items-center justify-center text-[#6366f1] text-4xl">
+            <div className="w-20 h-20 rounded-full bg-[#eef2ff] flex items-center justify-center text-[#6366f1] text-3xl">
               <FiInbox />
             </div>
 
           </div>
 
           {/* Accepted */}
-          <div className="bg-white border rounded-[32px] p-8 flex justify-between items-center">
+          <div className="bg-white border rounded-[32px] p-5 flex justify-between items-center">
 
             <div>
 
@@ -72,20 +72,20 @@ export default function Requests() {
                 Accepted
               </p>
 
-              <h2 className="text-6xl font-bold text-[#16a34a]">
+              <h2 className="text-3xl font-bold text-[#16a34a]">
                 0
               </h2>
 
             </div>
 
-            <div className="w-20 h-20 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#16a34a] text-4xl">
+            <div className="w-20 h-20 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#16a34a] text-3xl">
               <FiCheck />
             </div>
 
           </div>
 
           {/* Rejected */}
-          <div className="bg-white border rounded-[32px] p-8 flex justify-between items-center">
+          <div className="bg-white border rounded-[32px] p-5 flex justify-between items-center">
 
             <div>
 
@@ -93,13 +93,13 @@ export default function Requests() {
                 Rejected
               </p>
 
-              <h2 className="text-6xl font-bold text-red-500">
+              <h2 className="text-3xl font-bold text-red-500">
                 0
               </h2>
 
             </div>
 
-            <div className="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center text-red-500 text-4xl">
+            <div className="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center text-red-500 text-3xl">
               <FiX />
             </div>
 
@@ -112,7 +112,7 @@ export default function Requests() {
 
           <button
             onClick={() => setActiveTab("pending")}
-            className={`pb-5 text-2xl font-semibold ${
+            className={`pb-5 text-xl font-semibold ${
               activeTab === "pending"
                 ? "text-[#6366f1] border-b-4 border-[#6366f1]"
                 : "text-gray-500"
@@ -123,7 +123,7 @@ export default function Requests() {
 
           <button
             onClick={() => setActiveTab("accepted")}
-            className={`pb-5 text-2xl font-semibold ${
+            className={`pb-5 text-xl font-semibold ${
               activeTab === "accepted"
                 ? "text-[#6366f1] border-b-4 border-[#6366f1]"
                 : "text-gray-500"
@@ -134,7 +134,7 @@ export default function Requests() {
 
           <button
             onClick={() => setActiveTab("rejected")}
-            className={`pb-5 text-2xl font-semibold ${
+            className={`pb-5 text-xl font-semibold ${
               activeTab === "rejected"
                 ? "text-[#6366f1] border-b-4 border-[#6366f1]"
                 : "text-gray-500"
@@ -146,12 +146,12 @@ export default function Requests() {
         </div>
 
         {/* Request Card */}
-        <div className="bg-white border rounded-[40px] p-10 shadow-sm">
+        <div className="bg-white border rounded-[40px] p-6 shadow-sm">
 
-          <div className="flex justify-between gap-10">
+          <div className="flex justify-between gap-6">
 
             {/* Left */}
-            <div className="flex gap-8 flex-1">
+            <div className="flex gap-5 flex-1">
 
               <img
                 src="https://randomuser.me/api/portraits/women/44.jpg"
@@ -164,11 +164,11 @@ export default function Requests() {
                 {/* Name */}
                 <div className="flex items-center gap-4 mb-3">
 
-                  <h2 className="text-4xl font-bold text-[#1e293b]">
+                  <h2 className="text-3xl font-bold text-[#1e293b]">
                     Priya Sharma
                   </h2>
 
-                  <span className="bg-[#eef2ff] text-[#6366f1] px-4 py-1 rounded-full text-lg font-semibold">
+                  <span className="bg-[#eef2ff] text-[#6366f1] px-4 py-1 rounded-full text-[14px] font-semibold">
                     ★ 4.8
                   </span>
 
@@ -180,15 +180,15 @@ export default function Requests() {
                 </p>
 
                 {/* Ride Details */}
-                <div className="bg-[#f8fafc] rounded-[28px] p-8 grid grid-cols-2 gap-8">
+                <div className="bg-[#f8fafc] rounded-[28px] p-5 grid grid-cols-2 gap-5">
 
                   <div>
 
-                    <p className="text-gray-400 text-lg mb-2">
+                    <p className="text-gray-400 text-[14px] mb-2">
                       Route
                     </p>
 
-                    <h3 className="text-2xl font-semibold text-[#1e293b]">
+                    <h3 className="text-xl font-semibold text-[#1e293b]">
                       Hostel Block A → Main Campus
                     </h3>
 
@@ -196,11 +196,11 @@ export default function Requests() {
 
                   <div>
 
-                    <p className="text-gray-400 text-lg mb-2">
+                    <p className="text-gray-400 text-[14px] mb-2">
                       Time
                     </p>
 
-                    <h3 className="text-2xl font-semibold text-[#1e293b]">
+                    <h3 className="text-xl font-semibold text-[#1e293b]">
                       8:30 AM
                     </h3>
 
@@ -208,11 +208,11 @@ export default function Requests() {
 
                   <div>
 
-                    <p className="text-gray-400 text-lg mb-2">
+                    <p className="text-gray-400 text-[14px] mb-2">
                       Vehicle
                     </p>
 
-                    <h3 className="text-2xl font-semibold text-[#1e293b]">
+                    <h3 className="text-xl font-semibold text-[#1e293b]">
                       Bicycle
                     </h3>
 
@@ -220,11 +220,11 @@ export default function Requests() {
 
                   <div>
 
-                    <p className="text-gray-400 text-lg mb-2">
+                    <p className="text-gray-400 text-[14px] mb-2">
                       Price
                     </p>
 
-                    <h3 className="text-2xl font-semibold text-[#1e293b]">
+                    <h3 className="text-xl font-semibold text-[#1e293b]">
                       ₹25
                     </h3>
 
@@ -235,11 +235,11 @@ export default function Requests() {
                 {/* Message */}
                 <div className="bg-[#f8f7ff] rounded-[28px] p-6 mt-6">
 
-                  <p className="text-gray-500 text-lg mb-3">
+                  <p className="text-gray-500 text-[14px] mb-3">
                     Message
                   </p>
 
-                  <p className="italic text-2xl text-[#1e293b]">
+                  <p className="italic text-xl text-[#1e293b]">
                     "Hi! I'd like to join your ride."
                   </p>
 
@@ -256,12 +256,12 @@ export default function Requests() {
                 onClick={() =>
                   navigate("/active-ride")
                 }
-                className="bg-green-500 hover:bg-green-600 transition text-white px-8 py-5 rounded-2xl text-2xl font-semibold"
+                className="bg-green-500 hover:bg-green-600 transition text-white px-7 py-3 rounded-2xl text-xl font-semibold"
               >
                 ✓ Accept
               </button>
 
-              <button className="border-2 border-red-400 text-red-500 hover:bg-red-50 transition px-8 py-5 rounded-2xl text-2xl font-semibold">
+              <button className="border-2 border-red-400 text-red-500 hover:bg-red-50 transition px-7 py-3 rounded-2xl text-xl font-semibold">
                 ✕ Reject
               </button>
 

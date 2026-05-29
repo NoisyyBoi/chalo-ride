@@ -1,10 +1,35 @@
 import { Link } from "react-router-dom";
 
+let user = null;
+
+try {
+
+  const storedUser =
+    localStorage.getItem("user");
+
+  if (
+    storedUser &&
+    storedUser !== "undefined"
+  ) {
+
+    user =
+      JSON.parse(storedUser);
+
+  }
+
+} catch (error) {
+
+  console.log(
+    "Invalid user data"
+  );
+
+}
+
 export default function Navbar() {
   return (
     <nav className="w-full border-b border-slate-200 bg-white sticky top-0 z-50">
 
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-7 h-20 flex items-center justify-between">
 
         {/* LOGO */}
         <Link to="/" className="flex items-center gap-3">
@@ -13,7 +38,7 @@ export default function Navbar() {
             🛵
           </div>
 
-          <h1 className="text-2xl font-bold">
+          <h1 className="text-xl font-bold">
             <span className="text-indigo-500">
               Chalo
             </span>
@@ -26,7 +51,7 @@ export default function Navbar() {
         </Link>
 
         {/* LINKS */}
-        <div className="hidden md:flex items-center gap-10 text-sm font-medium text-slate-700">
+        <div className="hidden md:flex items-center gap-6 text-base font-medium text-slate-700">
 
           <Link to="/" className="text-indigo-500 border-b-2 border-pink-400 pb-1">
             Home
@@ -49,21 +74,72 @@ export default function Navbar() {
         </div>
 
         {/* BUTTONS */}
-        <div className="flex items-center gap-4">
+        {/* RIGHT SIDE */}
+        <div className="flex items-center gap-5">
 
-          <Link to="/login">
-            <button className="font-medium">
-              Login
-            </button>
-          </Link>
+          {user ? (
 
-          <Link to="/signup">
+            <>
+    
+              {/* REQUESTS */}
+              <Link
+                to="/requests"
+              >
 
-            <button className="bg-indigo-500 text-white px-6 py-3 rounded-xl font-medium hover:scale-105 duration-300">
-              Sign Up
-            </button>
+                <button className="font-medium text-slate-700 hover:text-indigo-500">
 
-          </Link>
+                  Requests
+
+                </button>
+
+              </Link>
+
+              {/* PROFILE ICON */}
+              <Link
+                to="/profile"
+              >
+
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center text-white font-bold text-[14px] cursor-pointer hover:scale-105 duration-300">
+
+                  {
+                    user.name
+                      ?.charAt(0)
+                      ?.toUpperCase()
+                  }
+
+                </div>
+
+              </Link>
+
+            </>
+
+          ) : (
+
+            <>
+
+              <Link to="/login">
+
+                <button className="font-medium">
+
+                  Login
+
+                </button>
+
+              </Link>
+
+              <Link to="/signup">
+
+                <button className="bg-indigo-500 text-white px-7 py-3 rounded-xl font-medium hover:scale-105 duration-300">
+
+                  Sign Up
+
+                </button>
+
+              </Link>
+
+            </>
+
+          )}
 
         </div>
 

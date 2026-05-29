@@ -206,20 +206,20 @@ export default function OfferRide() {
 
       <Navbar />
 
-      <div className="max-w-7xl mx-auto px-6 py-14">
+      <div className="max-w-7xl mx-auto px-7 py-14">
 
         {/* TOP */}
         <div className="flex justify-between items-start mb-12">
 
           <div>
 
-            <h1 className="text-6xl font-bold text-[#1e293b] mb-4">
+            <h1 className="text-3xl font-bold text-[#1e293b] mb-4">
 
               Offer a Ride
 
             </h1>
 
-            <p className="text-gray-500 text-2xl">
+            <p className="text-gray-500 text-xl">
 
               Share your journey and help fellow students save money
 
@@ -232,7 +232,7 @@ export default function OfferRide() {
             onClick={() =>
               setAvailable(!available)
             }
-            className={`px-6 py-3 rounded-2xl font-semibold transition ${
+            className={`px-7 py-3 rounded-2xl font-semibold transition ${
               available
                 ? "bg-green-100 text-green-600"
                 : "bg-red-100 text-red-500"
@@ -248,13 +248,13 @@ export default function OfferRide() {
         </div>
 
         {/* MAIN GRID */}
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-3 gap-5">
 
           {/* LEFT */}
-          <div className="col-span-2 bg-white rounded-[36px] shadow-lg p-10">
+          <div className="col-span-2 bg-white rounded-[36px] shadow-lg p-6">
 
             {/* ROUTE */}
-            <h2 className="text-4xl font-bold mb-8">
+            <h2 className="text-3xl font-bold mb-8">
 
               Route Information
 
@@ -279,7 +279,7 @@ export default function OfferRide() {
                   onChange={(e) =>
                     setFrom(e.target.value)
                   }
-                  className="w-full bg-[#f8fafc] border rounded-2xl px-5 py-5 outline-none"
+                  className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-3 outline-none"
                 />
 
               </div>
@@ -301,7 +301,7 @@ export default function OfferRide() {
                   onChange={(e) =>
                     setTo(e.target.value)
                   }
-                  className="w-full bg-[#f8fafc] border rounded-2xl px-5 py-5 outline-none"
+                  className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-3 outline-none"
                 />
 
               </div>
@@ -309,7 +309,7 @@ export default function OfferRide() {
             </div>
 
             {/* SCHEDULE */}
-            <h2 className="text-4xl font-bold mb-8">
+            <h2 className="text-3xl font-bold mb-8">
 
               Schedule Type
 
@@ -321,16 +321,16 @@ export default function OfferRide() {
                 onClick={() =>
                   setScheduleType("one-time")
                 }
-                className={`border-2 rounded-3xl p-8 ${
+                className={`border-2 rounded-3xl p-5 ${
                   scheduleType === "one-time"
                     ? "border-[#6366f1]"
                     : "border-gray-200"
                 }`}
               >
 
-                <FiCalendar className="mx-auto text-4xl text-[#6366f1] mb-5" />
+                <FiCalendar className="mx-auto text-3xl text-[#6366f1] mb-5" />
 
-                <h3 className="text-2xl font-bold">
+                <h3 className="text-xl font-bold">
 
                   One-Time Ride
 
@@ -342,16 +342,16 @@ export default function OfferRide() {
                 onClick={() =>
                   setScheduleType("recurring")
                 }
-                className={`border-2 rounded-3xl p-8 ${
+                className={`border-2 rounded-3xl p-5 ${
                   scheduleType === "recurring"
                     ? "border-[#6366f1]"
                     : "border-gray-200"
                 }`}
               >
 
-                <FiActivity className="mx-auto text-4xl text-[#6366f1] mb-5" />
+                <FiActivity className="mx-auto text-3xl text-[#6366f1] mb-5" />
 
-                <h3 className="text-2xl font-bold">
+                <h3 className="text-xl font-bold">
 
                   Recurring Schedule
 
@@ -372,7 +372,7 @@ export default function OfferRide() {
                   onChange={(e) =>
                     setDate(e.target.value)
                   }
-                  className="w-full bg-[#f8fafc] border rounded-2xl px-5 py-5 outline-none"
+                  className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-3 outline-none"
                 />
 
                 <input
@@ -381,7 +381,7 @@ export default function OfferRide() {
                   onChange={(e) =>
                     setTime(e.target.value)
                   }
-                  className="w-full bg-[#f8fafc] border rounded-2xl px-5 py-5 outline-none"
+                  className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-3 outline-none"
                 />
 
               </div>
@@ -390,7 +390,7 @@ export default function OfferRide() {
 
               <div className="mb-10">
 
-                <h3 className="text-2xl font-bold mb-6">
+                <h3 className="text-xl font-bold mb-6">
 
                   Weekly Availability
 
@@ -414,14 +414,14 @@ export default function OfferRide() {
                         onClick={() =>
                           toggleDay(day)
                         }
-                        className={`px-6 py-6 flex justify-between items-center cursor-pointer ${
+                        className={`px-7 py-6 flex justify-between items-center cursor-pointer ${
                           selectedDays.includes(day)
                             ? "bg-[#eef2ff]"
                             : "bg-[#f8fafc]"
                         }`}
                       >
 
-                        <h3 className="text-2xl font-semibold">
+                        <h3 className="text-xl font-semibold">
 
                           {day}
 
@@ -453,7 +453,7 @@ export default function OfferRide() {
                                 e.target.value
                               )
                             }
-                            className="w-full bg-white border rounded-2xl px-5 py-4 outline-none"
+                            className="w-full bg-white border rounded-2xl px-7 py-2 outline-none"
                           />
 
                         </div>
@@ -468,7 +468,7 @@ export default function OfferRide() {
 
                 <div className="bg-[#eef2ff] rounded-3xl p-6 mt-6 flex gap-4">
 
-                  <FiAlertCircle className="text-3xl text-[#6366f1]" />
+                  <FiAlertCircle className="text-xl text-[#6366f1]" />
 
                   <p className="text-gray-500">
 
@@ -483,7 +483,7 @@ export default function OfferRide() {
             )}
 
             {/* VEHICLE */}
-            <h2 className="text-4xl font-bold mb-8">
+            <h2 className="text-3xl font-bold mb-8">
 
               Ride Details
 
@@ -496,7 +496,7 @@ export default function OfferRide() {
                 onChange={(e) =>
                   setVehicle(e.target.value)
                 }
-                className="bg-[#f8fafc] border rounded-2xl px-5 py-5 outline-none"
+                className="bg-[#f8fafc] border rounded-2xl px-7 py-3 outline-none"
               >
 
                 <option>Bike</option>
@@ -512,7 +512,7 @@ export default function OfferRide() {
                 onChange={(e) =>
                   setVehicleModel(e.target.value)
                 }
-                className="bg-[#f8fafc] border rounded-2xl px-5 py-5 outline-none"
+                className="bg-[#f8fafc] border rounded-2xl px-7 py-3 outline-none"
               />
 
               <input
@@ -522,7 +522,7 @@ export default function OfferRide() {
                 onChange={(e) =>
                   setMileage(e.target.value)
                 }
-                className="bg-[#f8fafc] border rounded-2xl px-5 py-5 outline-none"
+                className="bg-[#f8fafc] border rounded-2xl px-7 py-3 outline-none"
               />
 
             </div>
@@ -531,13 +531,13 @@ export default function OfferRide() {
             <textarea
               rows="5"
               placeholder="Additional Notes"
-              className="w-full bg-[#f8fafc] border rounded-3xl px-5 py-5 outline-none resize-none mb-10"
+              className="w-full bg-[#f8fafc] border rounded-3xl px-7 py-3 outline-none resize-none mb-10"
             ></textarea>
 
             {/* BUTTON */}
             <button
               onClick={publishRide}
-              className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white py-6 rounded-3xl font-bold text-2xl flex items-center justify-center gap-3"
+              className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white py-6 rounded-3xl font-bold text-xl flex items-center justify-center gap-3"
             >
 
               <FiPlus />
@@ -551,9 +551,9 @@ export default function OfferRide() {
           {/* RIGHT */}
           <div>
 
-            <div className="bg-white rounded-[32px] shadow-lg p-8">
+            <div className="bg-white rounded-[32px] shadow-lg p-5">
 
-              <h2 className="text-3xl font-bold mb-8">
+              <h2 className="text-xl font-bold mb-8">
 
                 Rider Preferences
 
@@ -572,7 +572,7 @@ export default function OfferRide() {
                     onClick={() =>
                       togglePreference(pref)
                     }
-                    className={`w-full text-left px-5 py-4 rounded-2xl font-semibold border transition ${
+                    className={`w-full text-left px-7 py-2 rounded-2xl font-semibold border transition ${
                       preferences.includes(pref)
                         ? "bg-[#6366f1] text-white border-[#6366f1]"
                         : "bg-[#f8fafc] border-gray-200"
