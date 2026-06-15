@@ -36,6 +36,7 @@ export default function Navbar() {
         : "text-slate-700 hover:text-indigo-500 transition-all duration-300 hover:-translate-y-0.5";
 
   return (
+    
     <nav className="w-full border-b border-slate-200 bg-white sticky top-0 z-[9999]">
 
       <div className="max-w-7xl mx-auto px-7 h-20 flex items-center justify-between">
