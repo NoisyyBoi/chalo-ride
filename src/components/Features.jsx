@@ -8,7 +8,7 @@ export default function Features() {
 
         <div className="text-center">
 
-          <h2 className="text-3xl font-bold text-[#1E293B]">
+          <h2 className="text-2xl font-bold text-[#1E293B]">
             Why Students Love ChaloRide
           </h2>
 

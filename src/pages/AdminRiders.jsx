@@ -105,7 +105,7 @@ export default function AdminRiders() {
         {/* TOP */}
         <div className="flex items-center justify-between mb-8">
 
-          <h1 className="text-3xl font-bold text-[#1e293b]">
+          <h1 className="text-xl font-bold text-[#1e293b]">
 
             Active Riders
 
@@ -314,9 +314,17 @@ export default function AdminRiders() {
               {/* STATUS */}
               <div>
 
-                <span className="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap">
+                <span
+                  className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap ${
+                    ride.status === "completed"
+                      ? "bg-gray-100 text-gray-600"
+                      : "bg-green-100 text-green-600"
+                  }`}
+                >
 
-                  Active
+                  {ride.status === "completed"
+                    ? "Completed"
+                    : "Active"}
 
                 </span>
 

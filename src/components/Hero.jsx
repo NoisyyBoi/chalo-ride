@@ -27,7 +27,7 @@ export default function Hero() {
 
           </h1>
 
-        <p className="mt-8 text-[22px] text-black leading-10 max-w-xl font-medium">
+        <p className="mt-8 text-[18px] text-black leading-10 max-w-xl font-medium">
             Join thousands of verified college students across India
             who are saving money and reducing carbon footprint by
             sharing rides to campus.

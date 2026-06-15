@@ -48,8 +48,24 @@ const rideSchema =
 
       status: {
         type: String,
-        default: "active",
+        default: "available",
       },
+
+      repeatType: {
+        type: String,
+        default: "once",
+      },
+
+      isAvailableToday: {
+        type: Boolean,
+        default: true,
+      },
+
+      unavailableDate: {
+        type: String,
+        default: "",
+      },
+
     },
     {
       timestamps: true,

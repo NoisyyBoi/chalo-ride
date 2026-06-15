@@ -172,7 +172,7 @@ export default function AdminEarnings() {
         {/* TOP */}
         <div className="flex justify-between items-center mb-8">
 
-          <h1 className="text-3xl font-bold text-[#1e293b]">
+          <h1 className="text-xl font-bold text-[#1e293b]">
 
             Ride Revenue Analytics
 
@@ -210,7 +210,7 @@ export default function AdminEarnings() {
 
             </p>
 
-            <h2 className="text-3xl font-bold text-[#1e293b] mt-3">
+            <h2 className="text-xl font-bold text-[#1e293b] mt-3">
 
               ₹{earnings?.totalRevenue || 0}
 
@@ -234,7 +234,7 @@ export default function AdminEarnings() {
 
             </p>
 
-            <h2 className="text-3xl font-bold text-[#1e293b] mt-3">
+            <h2 className="text-xl font-bold text-[#1e293b] mt-3">
 
               ₹{earnings?.averagePerRide || 0}
 
@@ -258,7 +258,7 @@ export default function AdminEarnings() {
 
             </p>
 
-            <h2 className="text-3xl font-bold text-[#1e293b] mt-3">
+            <h2 className="text-xl font-bold text-[#1e293b] mt-3">
 
               {earnings?.totalRides || 0}
 
@@ -275,7 +275,7 @@ export default function AdminEarnings() {
           {/* GRAPH */}
           <div className="bg-white border border-[#e2e8f0] rounded-[32px] p-8">
 
-            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+            <h2 className="text-xl font-bold text-[#1e293b] mb-6">
 
               Monthly Earnings Trend
 
@@ -323,7 +323,7 @@ export default function AdminEarnings() {
           {/* TOP RIDERS */}
           <div className="bg-white border border-[#e2e8f0] rounded-[32px] p-8">
 
-            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+            <h2 className="text-xl font-bold text-[#1e293b] mb-6">
 
               Top Earning Riders
 

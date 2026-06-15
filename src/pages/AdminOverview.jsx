@@ -59,10 +59,10 @@ export default function AdminOverview() {
       <DashboardTabs active="overview" />
 
       {/* CONTENT */}
-      <div className="max-w-[1450px] mx-auto px-8 py-8">
+      <div className="max-w-[1450px] mx-auto px-8 py-6">
 
         {/* STATS */}
-        <div className="grid grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-4 gap-6 mb-6">
 
           <StatCard
             icon={<FiUsers />}

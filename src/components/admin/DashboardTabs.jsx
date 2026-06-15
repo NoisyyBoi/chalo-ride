@@ -51,7 +51,7 @@ export default function DashboardTabs({ active }) {
 
     <div className="max-w-[1450px] mx-auto px-8 pt-6">
 
-      <div className="bg-white border border-gray-200 rounded-[32px] p-4 flex items-center justify-between shadow-sm">
+      <div className="bg-white border border-gray-200 rounded-[30px] p-4 flex items-center justify-between shadow-sm">
 
         {tabs.map((tab) => (
 
@@ -63,11 +63,11 @@ export default function DashboardTabs({ active }) {
               flex items-center justify-center gap-3
 
               w-[230px]
-              h-[72px]
+              h-[52px]
 
-              rounded-[22px]
+              rounded-[52px]
 
-              text-[18px]
+              text-[14px]
               font-semibold
 
               transition-all duration-200
@@ -81,7 +81,7 @@ export default function DashboardTabs({ active }) {
             `}
           >
 
-            <span className="text-[20px] flex items-center justify-center">
+            <span className="text-[16px] flex items-center justify-center">
               {tab.icon}
             </span>
 

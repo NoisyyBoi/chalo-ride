@@ -21,6 +21,9 @@ export default function AdminVerifications() {
   const [users, setUsers] =
     useState([]);
 
+  const [filter, setFilter] =
+    useState("all");
+
   const [previewImage, setPreviewImage] =
     useState(null);
 
@@ -68,6 +71,27 @@ export default function AdminVerifications() {
     fetchUsers();
 
   }, []);
+
+
+  const rejectUser = async (id) => {
+
+    try {
+
+      await API.delete(
+        `/admin/user/${id}`
+      );
+
+      fetchUsers();
+
+      alert("User rejected");
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+  };
 
   const exportPDF = () => {
 
@@ -118,6 +142,21 @@ export default function AdminVerifications() {
 
   };
 
+  const filteredUsers =
+    users.filter((user) => {
+
+      if (filter === "verified") {
+        return user.isVerified;
+      }
+
+      if (filter === "pending") {
+        return !user.isVerified;
+      }
+
+      return true;
+
+    });
+
   return (
 
     <div className="min-h-screen bg-[#f5f7fb]">
@@ -133,41 +172,49 @@ export default function AdminVerifications() {
         {/* TOP */}
         <div className="flex items-center justify-between mb-10">
 
-          <h1 className="text-3xl font-bold text-[#1e293b]">
+          <h1 className="text-xl font-bold text-[#1e293b]">
 
             Student Verifications
 
           </h1>
 
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4 ml-auto">
 
-            <button className="bg-white border px-7 py-2 rounded-2xl flex items-center gap-3 text-[14px] font-semibold">
+            <div className="bg-white border border-[#e2e8f0] px-5 h-[56px] rounded-2xl flex items-center gap-3 shadow-sm">
 
-              <FiFilter />
+              <FiFilter className="text-gray-500" />
 
-              Filter
+              <select
+                value={filter}
+                onChange={(e) =>
+                  setFilter(e.target.value)
+                }
+                className="outline-none bg-transparent text-[14px] font-medium cursor-pointer"
+              >
+                <option value="all">All</option>
+                <option value="verified">Verified</option>
+                <option value="pending">Pending</option>
+              </select>
 
-            </button>
+            </div>
 
             <button
               onClick={exportPDF}
               className="bg-[#7c7df6] text-white px-7 py-2 rounded-2xl flex items-center gap-3 text-[14px] font-semibold"
             >
-
               <FiDownload />
-
-              Export PDF
-
+                Export PDF
             </button>
 
           </div>
+          
 
         </div>
 
         {/* USER CARDS */}
         <div className="space-y-8">
 
-          {users.map((user) => (
+          {filteredUsers.map((user) => (
 
             <div
               key={user._id}
@@ -189,7 +236,7 @@ export default function AdminVerifications() {
 
                   <div className="flex items-center gap-8 mb-4">
 
-                    <h2 className="text-2xl font-bold text-[#1e293b]">
+                    <h2 className="text-xl font-bold text-[#1e293b]">
                       {user.name}
 
                     </h2>
@@ -206,7 +253,7 @@ export default function AdminVerifications() {
 
                   </div>
 
-                  <div className="space-y-4 text-[#475569] text-[16px]">
+                  <div className="space-y-4 text-[#475569] text-[14px]">
 
                     <p className="flex items-center gap-3">
 
@@ -294,6 +341,7 @@ export default function AdminVerifications() {
 
                   ) : (
 
+                  <>
                     <button
                       onClick={() =>
                         verifyUser(user._id)
@@ -305,16 +353,22 @@ export default function AdminVerifications() {
 
                     </button>
 
-                  )}
+                    <button
+                      onClick={() =>
+                        rejectUser(user._id)
+                      }     
+                      className="border border-red-300 text-red-500 px-10 py-5 rounded-2xl text-lg font-semibold w-56"
+                    >
 
-                  <button className="border border-red-300 text-red-500 px-10 py-5 rounded-2xl text-lg font-semibold w-56">
+                      ✕ Reject
 
-                    ✕ Reject
+                    </button>
+                  </>
 
-                  </button>
+                )}
 
-                </div>
-
+              </div>
+                 
               </div>
 
             </div>

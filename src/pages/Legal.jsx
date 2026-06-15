@@ -39,17 +39,17 @@ export default function Legal() {
       {/* CONTENT */}
       <section className="flex-1 max-w-6xl mx-auto w-full px-7 py-12">
 
-        <div className="bg-white rounded-[32px] shadow-lg border overflow-hidden">
+        <div className="bg-white rounded-[42px] shadow-lg border overflow-hidden">
 
           {/* TAB HEADER */}
           <div className="grid grid-cols-2 border-b">
 
             <button
               onClick={() => setActiveTab("terms")}
-              className={`py-5 font-bold transition ${
+              className={`py-6 font-bold transition ${
                 activeTab === "terms"
                   ? "bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white"
-                  : "text-slate-500 bg-white"
+                  : "text-slate-550 bg-white"
               }`}
             >
               Terms of Service
@@ -57,10 +57,10 @@ export default function Legal() {
 
             <button
               onClick={() => setActiveTab("privacy")}
-              className={`py-5 font-bold transition ${
+              className={`py-6 font-bold transition ${
                 activeTab === "privacy"
                   ? "bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white"
-                  : "text-slate-500 bg-white"
+                  : "text-slate-550 bg-white"
               }`}
             >
               Privacy Policy
@@ -82,7 +82,7 @@ export default function Legal() {
 
                   <div>
 
-                    <h3 className="font-bold text-indigo-600 text-xl">
+                    <h3 className="font-bold text-indigo-600 text-[18px]">
                       College Students Only Platform
                     </h3>
 

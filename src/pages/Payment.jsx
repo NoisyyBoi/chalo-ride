@@ -61,17 +61,23 @@ export default function Payment() {
         (total, ride) =>
 
           total +
-          ride.ride?.fare,
+          (ride.ride?.fare || 0),
 
         0
       );
 
-
     const totalRides =
       acceptedRides.length;
 
+    const currentRide =
+      acceptedRides.length > 0
+        ? acceptedRides[0]
+        : null;
+
     const distance =
-      acceptedRides[0]?.ride?.distance || 0;
+      Number(
+        currentRide?.ride?.distance
+      ) || 0;
 
     const mileage = 30;
 
@@ -86,7 +92,9 @@ export default function Payment() {
       fuelNeeded * petrolPrice;
 
     const passengerAmount =
-      fuelCost + riderProfit;
+      Math.round(
+        fuelCost + riderProfit
+      );
 
   return (
     <div className="bg-[#f6f7fb] min-h-screen">
@@ -95,20 +103,20 @@ export default function Payment() {
       <Navbar />
 
       {/* Main */}
-      <div className="max-w-7xl mx-auto px-7 py-14">
+      <div className="max-w-7xl mx-auto px-7 py-1">
 
         {/* Heading */}
-        <div className="text-center mb-14">
+        <div className="max-w-[1150px] mx-auto px-8 mb-10 text-center">
 
           <div className="text-7xl mb-6">
             🛵
           </div>
 
-          <h1 className="text-3xl font-bold text-[#1e293b]">
+          <h1 className="text-xl font-bold text-[#1e293b]">
             Ride Completed!
           </h1>
 
-          <p className="text-gray-500 text-xl mt-4">
+          <p className="text-gray-500 text-[14px] mt-4">
             Fuel contribution calculated successfully
           </p>
 
@@ -117,15 +125,15 @@ export default function Payment() {
 
 
         {/* Layout */}
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
 
           {/* LEFT SIDE */}
-          <div className="col-span-2 space-y-8">
+          <div className="space-y-8">
 
             {/* Trip Summary */}
             <div className="bg-white rounded-[36px] border p-8 shadow-sm">
 
-              <h2 className="text-3xl font-bold mb-8">
+              <h2 className="text-xl font-bold text-center mb-10">
                 Trip Summary
               </h2>
 
@@ -134,7 +142,7 @@ export default function Payment() {
                 {/* Distance */}
                 <div className="bg-[#f8fafc] rounded-3xl p-8 text-center">
 
-                  <h3 className="text-3xl font-bold text-[#6366f1]">
+                  <h3 className="text-xl font-bold text-[#6366f1]">
                     {totalRides}
                   </h3>
 
@@ -147,7 +155,7 @@ export default function Payment() {
                 {/* Mileage */}
                 <div className="bg-[#f8fafc] rounded-3xl p-8 text-center">
 
-                  <h3 className="text-3xl font-bold text-[#6366f1]">
+                  <h3 className="text-xl font-bold text-[#6366f1]">
                     ₹{totalEarnings}
                   </h3>
 
@@ -160,7 +168,7 @@ export default function Payment() {
                 {/* Rider Profit */}
                 <div className="bg-[#f8fafc] rounded-3xl p-8 text-center">
 
-                    <h3 className="text-3xl font-bold text-[#6366f1]">
+                    <h3 className="text-xl font-bold text-[#6366f1]">
                         ₹{
                           totalRides > 0
                             ? (
@@ -177,6 +185,23 @@ export default function Payment() {
 
                 </div>
 
+                {/* Notice */}
+                <div className="
+                  col-span-3
+                  bg-yellow-50
+                  border
+                  border-yellow-200
+                  rounded-3xl
+                  p-8
+                  mt-4
+                ">
+
+                <p className="text-yellow-700 text-sm leading-7">
+                  Payments are handled personally between riders and passengers using UPI or cash. ChaloRide does not process payments.
+                </p>
+
+              </div>
+
               </div>
 
             </div>
@@ -185,100 +210,79 @@ export default function Payment() {
                   
 
           {/* RIGHT SIDE */}
-          <div className="bg-white rounded-[36px] border p-8 h-fit shadow-sm">
+          <div className="bg-white rounded-[26px] border p-8 shadow-sm">
 
-            <h2 className="text-3xl font-bold mb-8">
+            <h2 className="text-xl font-bold mb-5 text-center">
               Payment Information
             </h2>
 
-            <div className="space-y-5 mb-8">
+            <div className="grid grid-cols-2 gap-6">
 
-              <div className="bg-[#f8fafc] rounded-3xl p-6 flex justify-between">
-
-                <span className="text-gray-500">
+              <div className="bg-[#f8fafc] rounded-xl p-4 text-center">
+                <p className="text-gray-500 mb-2">
                   Distance
-                </span>
+                </p>    
 
-                <span className="font-bold">
+                <h3 className="text-xl font-bold text-[#6366f1]">
                   {distance} km
-                </span>
-
+                </h3>
               </div>
 
-
-              <div className="bg-[#f8fafc] rounded-3xl p-6 flex justify-between">
-
-                <span className="text-gray-500">
+              <div className="bg-[#f8fafc] rounded-xl p-4 text-center">
+                <p className="text-gray-500 mb-2">
                   Mileage
-                </span>
+                </p>  
 
-                <span className="font-bold">
+                <h3 className="text-xl font-bold text-[#6366f1]">
                   {mileage} km/L
-                </span>
-
+                </h3>
               </div>
 
-
-              <div className="bg-[#f8fafc] rounded-3xl p-6 flex justify-between">
-
-                <span className="text-gray-500">
+              <div className="bg-[#f8fafc] rounded-xl p-4 text-center">
+                <p className="text-gray-500 mb-2">
                   Fuel Cost
-                </span>
+                </p>
 
-                <span className="font-bold">
+                <h3 className="text-xl font-bold text-[#6366f1]">
                   ₹{fuelCost.toFixed(0)}
-                </span>
-
+                </h3>
               </div>
 
-
-              <div className="bg-[#f8fafc] rounded-3xl p-6 flex justify-between">
-
-                <span className="text-gray-500">
+              <div className="bg-[#f8fafc] rounded-xl p-4 text-center">
+                <p className="text-gray-500 mb-2">
                   Rider Profit
-                </span>
+                </p>
 
-                <span className="font-bold text-green-600">
+                <h3 className="text-xl font-bold text-green-600">
                   ₹{riderProfit}
-                </span>
-
+                </h3>
               </div>
 
             </div>
 
-            <div className="bg-[#eef2ff] rounded-3xl p-8 text-center">
+            <div className="mt-4 border-t pt-6 text-center">
 
-              <p className="text-gray-500 text-xl mb-3">
+              <p className="text-gray-500 text-lg">
                 Passenger Contribution
               </p>
 
-              <h2 className="text-4xl font-bold text-[#6366f1]">
-
+              <h2 className="text-xl font-bold text-[#6366f1] mt-3">
                 ₹{passengerAmount.toFixed(0)}
-
               </h2>
-
-            </div>
-
-                
-
-            {/* Notice */}
-            <div className="bg-yellow-50 border border-yellow-200 rounded-3xl p-6 mt-8">
-
-              <p className="text-yellow-700 text-[14px] leading-8">
-                Payments are handled personally
-                between riders and passengers
-                using UPI or cash. ChaloRide
-                does not process payments.
-              </p>
 
             </div>
 
           </div>
 
+                
+
+           
+
+          </div>
+
         </div>
 
-      </div>
+     
 
       {/* Footer */}
       <Footer />

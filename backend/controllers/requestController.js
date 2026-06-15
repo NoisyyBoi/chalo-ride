@@ -160,7 +160,18 @@ export const updateRequestStatus =
 
       await request.save();
 
-      res.json(request);
+      if (req.body.status === "accepted") {
+
+        await Ride.findByIdAndUpdate(
+          request.ride,
+          {
+            status: "active",
+          }
+        );
+
+      }
+
+res.json(request);
 
     } catch (error) {
 

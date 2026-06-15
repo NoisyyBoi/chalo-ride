@@ -13,7 +13,7 @@ export default function QuickActions() {
 
     <div className="bg-white rounded-[32px] border border-[#e2e8f0] p-8">
 
-      <h2 className="text-3xl font-bold text-[#1e293b] mb-8">
+      <h2 className="text-xl font-bold text-[#1e293b] mb-8">
 
         Quick Actions
 

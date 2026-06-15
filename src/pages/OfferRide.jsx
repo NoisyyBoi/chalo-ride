@@ -155,8 +155,19 @@ export default function OfferRide() {
 
   };
 
+
   const publishRide =
     async () => {
+
+      if (!user?.isVerified) {
+
+       alert(
+         "Please complete verification before offering a ride"
+        );
+
+        return;
+
+     }
 
       try {
 
@@ -210,13 +221,13 @@ export default function OfferRide() {
 
           <div>
 
-            <h1 className="text-3xl font-bold text-[#1e293b] mb-4">
+            <h1 className="text-2xl font-bold text-[#1e293b] mb-4">
 
               Offer a Ride
 
             </h1>
 
-            <p className="text-gray-500 text-xl">
+            <p className="text-gray-500 text-[16px]">
 
               Share your journey and help fellow students save money
 
@@ -251,17 +262,17 @@ export default function OfferRide() {
           <div className="col-span-2 bg-white rounded-[36px] shadow-lg p-6">
 
             {/* ROUTE */}
-            <h2 className="text-3xl font-bold mb-8">
+            <h2 className="text-xl font-bold mb-8">
 
               Route Information
 
             </h2>
 
-            <div className="grid grid-cols-2 gap-8 mb-10">
+            <div className="grid grid-cols-3 gap-8 mb-10">
 
               <div>
 
-                <label className="font-semibold mb-3 flex items-center gap-2">
+                <label className="font-semibold mb-2 flex items-center gap-2">
 
                   <FiMapPin />
 
@@ -283,7 +294,7 @@ export default function OfferRide() {
 
               <div>
 
-                <label className="font-semibold mb-3 flex items-center gap-2">
+                <label className="font-semibold mb-2 flex items-center gap-2">
 
                   <FiMapPin />
 
@@ -292,13 +303,33 @@ export default function OfferRide() {
                 </label>
 
                 <input
+                  type="text"
+                  placeholder="Destination Point"
+                  value={to}
+                  onChange={(e) =>
+                    setTo(e.target.value)
+                  }
+                  className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-5 outline-none "
+                />
+
+              </div>
+
+              <div>
+
+                <label className="font-semibold mb-2 flex items-center gap-2">
+
+                  Distance (KM)
+
+                </label>
+
+                <input
                   type="number"
-                  placeholder="Distance in KM"
+                  placeholder="Enter Distance"
                   value={distance}
                   onChange={(e) =>
                     setDistance(e.target.value)
                   }
-                  className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-5 outline-none mt-6"
+                  className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-5 outline-none"
                 />
 
               </div>
@@ -306,13 +337,13 @@ export default function OfferRide() {
             </div>
 
             {/* SCHEDULE */}
-            <h2 className="text-3xl font-bold mb-8">
+            <h2 className="text-xl font-bold mb-8">
 
               Schedule Type
 
             </h2>
 
-            <div className="grid grid-cols-2 gap-8 mb-10">
+            <div className="grid grid-cols-3 gap-8 mb-10">
 
               <button
                 onClick={() =>
@@ -327,7 +358,7 @@ export default function OfferRide() {
 
                 <FiCalendar className="mx-auto text-3xl text-[#6366f1] mb-5" />
 
-                <h3 className="text-xl font-bold">
+                <h3 className="text-[14px] font-bold">
 
                   One-Time Ride
 
@@ -348,7 +379,7 @@ export default function OfferRide() {
 
                 <FiActivity className="mx-auto text-3xl text-[#6366f1] mb-5" />
 
-                <h3 className="text-xl font-bold">
+                <h3 className="text-[14px] font-bold">
 
                   Recurring Schedule
 
@@ -361,7 +392,7 @@ export default function OfferRide() {
             {/* ONE TIME */}
             {scheduleType === "one-time" ? (
 
-              <div className="grid grid-cols-2 gap-8 mb-10">
+              <div className="grid grid-cols-3 gap-8 mb-10">
 
                 <input
                   type="date"
@@ -399,7 +430,7 @@ export default function OfferRide() {
 
                     <div
                       key={day}
-                      className={`border rounded-3xl overflow-hidden ${
+                      className={`border rounded-[14px] overflow-hidden ${
                         selectedDays.includes(day)
                           ? "border-[#6366f1]"
                           : "border-gray-200"
@@ -418,7 +449,7 @@ export default function OfferRide() {
                         }`}
                       >
 
-                        <h3 className="text-xl font-semibold">
+                        <h3 className="text-[14px] font-semibold">
 
                           {day}
 
@@ -480,13 +511,13 @@ export default function OfferRide() {
             )}
 
             {/* VEHICLE */}
-            <h2 className="text-3xl font-bold mb-8">
+            <h2 className="text-xl font-bold mb-8">
 
               Ride Details
 
             </h2>
 
-            <div className="grid grid-cols-2 gap-8 mb-10">
+            <div className="grid grid-cols-3 gap-8 mb-10">
 
               <select
                 value={vehicle}
@@ -534,7 +565,7 @@ export default function OfferRide() {
             {/* BUTTON */}
             <button
               onClick={publishRide}
-              className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white py-6 rounded-3xl font-bold text-xl flex items-center justify-center gap-3"
+              className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white py-6 rounded-xl font-bold text-xl flex items-center justify-center gap-3"
             >
 
               <FiPlus />

@@ -32,6 +32,9 @@ export const createRide =
 
           fare:
             req.body.fare,
+
+          distance: 
+            req.body.distance,
         });
 
       res.status(201).json(

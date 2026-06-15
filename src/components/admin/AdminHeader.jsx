@@ -2,6 +2,8 @@ import { FiBell } from "react-icons/fi";
 import { useEffect, useState }
 from "react";
 
+import Logo from "../../assets/logo.png";
+
 import axios from "axios";
 
 import {
@@ -96,17 +98,27 @@ export default function AdminHeader() {
     <div className="bg-white border-b">
 
       {/* TOP */}
-      <div className="flex justify-between items-center px-7 py-5">
+      <div className="flex justify-between items-center px-8 py-4">
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1">
 
-          <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
+          <div className="flex items-center gap-2">
+            <img
+              src={Logo}
+              alt="ChaloRide"
+              className="w-11 h-11 object-contain mt-4"
+            />
 
-          <h1 className="text-xl font-bold text-[#7c3aed]">
+            <h1 className="text-xl font-bold">
+              <span className="text-indigo-500">
+                Chalo
+              </span>
 
-            ChaloRide
-
-          </h1>
+              <span className="text-pink-500">
+                Ride
+              </span>
+            </h1>
+          </div>
 
         </div>
 
@@ -114,52 +126,60 @@ export default function AdminHeader() {
 
 
       {/* BOTTOM */}
-      <div className="flex justify-between items-center px-7 py-6">
+      <div className="relative pt-10 pb-6">
 
-        <div>
-
-          <h2 className="text-3xl font-bold text-[#1e293b]">
-
+        {/* CENTER TITLE */}
+        <div className="text-center -mt-14">
+          <h1 className="text-2xl font-bold text-[#1e293b]">
             Admin Dashboard
+          </h1>
 
-          </h2>
-
-          <p className="text-gray-500 mt-2 text-[14px]">
-
+          <p className="text-gray-500 mt-2">
             ChaloRide Management Portal
-
           </p>
-
         </div>
 
 
-        <div className="flex items-center gap-8">
+         {/* Right Side */}
+        <div className="absolute right-2 -top-4 flex flex-col items-center gap-1">
 
-          {/* NOTIFICATIONS */}
-          <button className="flex items-center gap-2 bg-gray-100 px-7 py-5 rounded-xl">
-
-            <FiBell />
-
-            {notificationCount} New
-
-          </button>
-
-
-          {/* LOGOUT */}
           <button
-            onClick={handleLogout}
-            className="border px-7 py-5 rounded-xl font-semibold hover:bg-[#f8fafc] transition"
+            className="
+              bg-red-50
+              border
+              border-red-200
+              text-red-500
+              px-5
+              py-2
+              rounded-xl
+              font-semibold
+            "
           >
-
-            Exit Admin
-
+            Logout
           </button>
+
+          <button
+            className="
+              w-10  
+              h-10
+              rounded-xl
+              border
+              bg-white
+              flex
+              items-center
+              justify-center
+            "
+          >
+            <FiBell />
+          </button>
+
+        </div>
 
         </div>
 
       </div>
 
-    </div>
+    
 
   );
 

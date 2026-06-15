@@ -30,7 +30,7 @@ export default function StatCard({
           {title}
         </p>
 
-        <h2 className="text-3xl font-bold mt-2">{value}</h2>
+        <h2 className="text-xl font-bold mt-2">{value}</h2>
 
         <p className="mt-3 text-base">{growth}</p>
       </div>

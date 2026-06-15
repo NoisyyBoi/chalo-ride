@@ -145,7 +145,7 @@ export default function AdminComplaints() {
         {/* TOP */}
         <div className="flex justify-between items-center mb-8">
 
-          <h1 className="text-3xl font-bold text-[#1e293b]">
+          <h1 className="text-xl font-bold text-[#1e293b]">
 
             Complaints Management
 
@@ -231,7 +231,7 @@ export default function AdminComplaints() {
               {/* LEFT */}
               <div className="flex-1">
 
-                <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+                <h2 className="text-xl font-bold text-[#1e293b] mb-6">
 
                   {complaint.title}
 
@@ -403,7 +403,7 @@ export default function AdminComplaints() {
             </button>
 
 
-            <h2 className="text-3xl font-bold text-[#1e293b] mb-8">
+            <h2 className="text-xl font-bold text-[#1e293b] mb-8">
 
               Complaint Investigation
 
@@ -421,7 +421,7 @@ export default function AdminComplaints() {
 
                 </p>
 
-                <h3 className="text-2xl font-bold text-[#1e293b]">
+                <h3 className="text-[14px] font-bold text-[#1e293b]">
 
                   {selectedComplaint.title}
 

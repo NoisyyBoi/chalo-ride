@@ -14,7 +14,7 @@ import {
   FiClock,
   FiUsers,
   FiTruck,
-  FiDollarSign,
+  FiCreditCard,
   FiMail,
   FiPhone,
   FiAlertTriangle,
@@ -59,7 +59,7 @@ export default function RiderDetails() {
 
     return (
 
-      <div className="min-h-screen flex items-center justify-center text-2xl font-semibold text-[#1e293b]">
+      <div className="min-h-screen flex items-center justify-center text-xl font-semibold text-[#1e293b]">
 
         Loading Rider Details...
 
@@ -68,6 +68,26 @@ export default function RiderDetails() {
     );
 
   }
+
+  const raiseAlert = () => {
+    alert("Alert raised successfully");
+  };
+
+  const suspendRider = async () => {
+    try {
+
+      await API.put(
+        `/admin/suspend/${ride.driver._id}`
+      );  
+
+      alert("Rider suspended");
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+  };
 
   return (
 
@@ -114,7 +134,7 @@ export default function RiderDetails() {
               {/* DETAILS */}
               <div>
 
-                <h1 className="text-4xl font-bold text-[#1e293b] mb-4">
+                <h1 className="text-xl font-bold text-[#1e293b] mb-4">
 
                   {
                     ride.driver?.name
@@ -146,6 +166,7 @@ export default function RiderDetails() {
             <div className="flex flex-col gap-4">
 
               <button
+                onClick={suspendRider}
                 className="
                 bg-[#fee2e2]
                 text-[#dc2626]
@@ -164,6 +185,7 @@ export default function RiderDetails() {
 
 
               <button
+                onClick={raiseAlert}
                 className="
                 bg-[#fef3c7]
                 text-[#d97706]
@@ -197,7 +219,7 @@ export default function RiderDetails() {
 
               <FiMapPin className="text-[#6366f1] text-2xl" />
 
-              <h2 className="text-2xl font-bold text-[#1e293b]">
+              <h2 className="text-xl font-bold text-[#1e293b]">
 
                 Route Details
 
@@ -205,7 +227,7 @@ export default function RiderDetails() {
 
             </div>
 
-            <div className="space-y-5 text-lg">
+            <div className="space-y-5 text-[14px]">
 
               <p>
 
@@ -245,7 +267,7 @@ export default function RiderDetails() {
 
               <FiTruck className="text-[#6366f1] text-2xl" />
 
-              <h2 className="text-2xl font-bold text-[#1e293b]">
+              <h2 className="text-xl font-bold text-[#1e293b]">
 
                 Vehicle Information
 
@@ -253,7 +275,7 @@ export default function RiderDetails() {
 
             </div>
 
-            <div className="space-y-5 text-lg">
+            <div className="space-y-5 text-[14px]">
 
               <p>
 
@@ -280,7 +302,7 @@ export default function RiderDetails() {
 
               <FiClock className="text-[#6366f1] text-2xl" />
 
-              <h2 className="text-2xl font-bold text-[#1e293b]">
+              <h2 className="text-xl font-bold text-[#1e293b]">
 
                 Ride Timing
 
@@ -304,7 +326,7 @@ export default function RiderDetails() {
 
               <FiUsers className="text-[#6366f1] text-2xl" />
 
-              <h2 className="text-2xl font-bold text-[#1e293b]">
+              <h2 className="text-xl font-bold text-[#1e293b]">
 
                 Seat Availability
 
@@ -328,9 +350,9 @@ export default function RiderDetails() {
 
           <div className="flex items-center gap-4 mb-5">
 
-            <FiDollarSign className="text-[#6366f1] text-2xl" />
+            <FiCreditCard className="text-[#6366f1] text-2xl" />
 
-            <h2 className="text-2xl font-bold text-[#1e293b]">
+            <h2 className="text-xl font-bold text-[#1e293b]">
 
               Ride Fare
 
@@ -338,7 +360,7 @@ export default function RiderDetails() {
 
           </div>
 
-          <p className="text-5xl font-bold text-[#6366f1]">
+          <p className="text-2xl font-bold text-[#6366f1]">
 
             ₹{ride.fare}
 

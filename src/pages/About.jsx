@@ -27,7 +27,7 @@ export default function About() {
             className="
             text-3xl
             md:text-3xl
-            lg:text-7xl
+            lg:text-5xl
             font-extrabold
             text-[#0F172A]
             leading-tight
@@ -84,8 +84,8 @@ export default function About() {
 
             <p
               className="
-              mt-10
-              text-[14px]
+              mt-8
+              text-[12px]
               md:text-xl
               text-slate-600
               leading-relaxed
@@ -99,8 +99,8 @@ export default function About() {
 
             <p
               className="
-              mt-8
-              text-[14px]
+              mt-7
+              text-[12px]
               md:text-xl
               text-slate-600
               leading-relaxed

@@ -499,7 +499,7 @@ export default function Profile() {
                 </div>
               </div>
 
-              <div className="bg-[#fef2f2] rounded-2xl p-8">
+              <div className="bg-[#f8f8f8] rounded-2xl p-8">
                 <p className="text-gray-400 mb-2">
                   Availability
                 </p>
@@ -555,7 +555,7 @@ export default function Profile() {
           {/* Right Side */}
           <div className="space-y-8">
             {/* Verified */}
-            <div className="bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] rounded-3xl p-8 text-white">
+            <div className="bg-gradient-to-r from-[#9293e0] to-[#8b5cf6] rounded-3xl p-8 text-white">
               <div className="flex items-center gap-3 mb-5">
                 <FiShield className="text-xl" />
 

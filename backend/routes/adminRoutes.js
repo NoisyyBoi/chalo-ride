@@ -110,6 +110,7 @@ router.put(
       }
 
       user.isVerified = true;
+      user.verificationStatus = "verified";
 
       await user.save();
 
@@ -128,8 +129,6 @@ router.put(
 
   }
 );
-
-export default router;
 
 //
 // ================= GET COMPLAINTS =================
@@ -446,4 +445,95 @@ router.get(
     }
 
   }
+  
 );
+
+router.put("/suspend/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    user.isSuspended = true;
+
+    await user.save();
+
+    res.json({
+      message: "User suspended",
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
+
+router.delete(
+  "/user/:id",
+  async (req, res) => {
+
+    try {
+
+      await User.findByIdAndDelete(
+        req.params.id
+      );
+
+      res.json({
+        message:
+          "User rejected successfully",
+      });
+
+    } catch (error) {
+
+      res.status(500).json({
+        message: error.message,
+      });
+
+    }
+
+  }
+);
+
+//-------------------Rejected-------------------------
+
+router.put(
+  "/reject/:id",
+  async (req, res) => {
+
+    try {
+
+      const user =
+        await User.findById(
+          req.params.id
+        );
+
+      user.isVerified = false;
+
+      user.verificationStatus =
+        "rejected";
+
+      await user.save();
+
+      res.json({
+        message:
+          "User rejected",
+      });
+
+    } catch (error) {
+
+      res.status(500).json({
+        message:
+          error.message,
+      });
+
+    }
+
+  }
+);
+
+export default router;

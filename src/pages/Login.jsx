@@ -53,6 +53,8 @@ export default function Login() {
 
       navigate("/");
 
+      window.location.reload();
+
     } catch (error) {
 
       toast.error(

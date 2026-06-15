@@ -1,44 +1,58 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import Logo from "../assets/logo.png";
 
-let user = null;
+export default function Navbar() {
 
-try {
+  let user = null;
 
-  const storedUser =
-    localStorage.getItem("user");
+  try {
 
-  if (
-    storedUser &&
-    storedUser !== "undefined"
-  ) {
+    const storedUser =
+      localStorage.getItem("user");
 
-    user =
-      JSON.parse(storedUser);
+    if (
+
+      storedUser &&
+      storedUser !== "undefined"
+    ) {
+
+      user =
+        JSON.parse(storedUser);
+
+    }
+    
+
+  } catch (error) {
+
+    console.log(
+      "Invalid user data"
+    );   
 
   }
 
-} catch (error) {
+  const navClass = ({ isActive }) =>
+      isActive
+        ? "text-indigo-500 border-b-2 border-pink-400 pb-1"
+        : "text-slate-700 hover:text-indigo-500 transition-all duration-300 hover:-translate-y-0.5";
 
-  console.log(
-    "Invalid user data"
-  );
-
-}
-
-export default function Navbar() {
   return (
-    <nav className="w-full border-b border-slate-200 bg-white sticky top-0 z-50">
+    <nav className="w-full border-b border-slate-200 bg-white sticky top-0 z-[9999]">
 
       <div className="max-w-7xl mx-auto px-7 h-20 flex items-center justify-between">
 
         {/* LOGO */}
-        <Link to="/" className="flex items-center gap-3">
+        <Link 
+          to="/"
+          className="flex items-center gap-2"
+        >
 
-          <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center text-white font-bold">
-            🛵
-          </div>
+          <img
+            src={Logo}
+            alt="ChaloRide"
+            className="w-12 h-12 object-contain mt-4"
+          />
 
-          <h1 className="text-xl font-bold">
+          <h1 className="text-xl font-extrabold leading-none">
             <span className="text-indigo-500">
               Chalo
             </span>
@@ -51,25 +65,71 @@ export default function Navbar() {
         </Link>
 
         {/* LINKS */}
-        <div className="hidden md:flex items-center gap-6 text-base font-medium text-slate-700">
+        
+        <div className="hidden md:flex items-center gap-6 text-base font-medium">
 
-          <Link to="/" className="text-indigo-500 border-b-2 border-pink-400 pb-1">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `
+              relative
+              pb-1
+              transition-all
+              duration-300
+              ${
+                isActive
+                  ? "text-indigo-500 border-b-2 border-pink-400"
+                  : "text-slate-700 hover:text-indigo-500"
+              }
+            `
+            }
+          >
             Home
-          </Link>
+          </NavLink>
 
-          <Link to="/find-ride">
+          <NavLink
+            to="/find-ride"
+            className={({ isActive }) =>
+              isActive
+                ? "text-indigo-500 border-b-2 border-pink-400 pb-1"
+                : "text-slate-700"
+            }
+          >
             Find Ride
-          </Link>
+          </NavLink>
 
-          <Link to="/offer-ride">
+          <NavLink
+            to="/offer-ride"
+            className={({ isActive }) =>
+              isActive
+                ? "text-indigo-500 border-b-2 border-pink-400 pb-1"
+                : "text-slate-700"
+            }
+          >
             Offer Ride
-          </Link>
+          </NavLink>
 
-          <Link to="/about">
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "text-indigo-500 border-b-2 border-pink-400 pb-1"
+                : "text-slate-700"
+            }
+          >
             About
-          </Link>
+          </NavLink>
 
-          <Link to="/legal">Legal</Link>
+          <NavLink
+            to="/legal"
+            className={({ isActive }) =>
+              isActive
+                ? "text-indigo-500 border-b-2 border-pink-400 pb-1"
+                : "text-slate-700"
+            }
+          >
+            Legal
+          </NavLink>
 
         </div>
 

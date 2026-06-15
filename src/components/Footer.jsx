@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Logo from "../assets/logo.png";
 
 export default function Footer() {
   return (
@@ -9,23 +10,24 @@ export default function Footer() {
         {/* BRAND */}
         <div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1 mb-6">
 
             <div className="
               w-10
               h-10
               rounded-full
-              bg-gradient-to-r
-              from-indigo-500
-              to-pink-500
               flex
               items-center
               justify-center
             ">
-              🛵
+              <img
+                src={Logo}
+                alt="ChaloRide"
+                className="w-11 h-11 object-contain translate-y-1"
+              />
             </div>
 
-            <h2 className="text-xl font-bold">
+            <h2 className="text-xl font-bold leading-none">
               ChaloRide
             </h2>
 

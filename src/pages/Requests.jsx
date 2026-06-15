@@ -110,8 +110,8 @@ export default function Requests() {
 
         );
 
-        fetchRequests();
-
+        await fetchRequests();
+        
       } catch (error) {
 
         console.log(error);
@@ -132,11 +132,11 @@ export default function Requests() {
         {/* Heading */}
         <div className="mb-12">
 
-          <h1 className="text-3xl font-bold text-[#1e293b] mb-4">
+          <h1 className="text-xl font-bold text-[#1e293b] mb-4">
             Ride Requests
           </h1>
 
-          <p className="text-gray-500 text-xl">
+          <p className="text-gray-500 text-[14px]">
             Manage incoming ride requests from students
           </p>
 
@@ -150,11 +150,11 @@ export default function Requests() {
 
             <div>
 
-              <p className="text-gray-500 text-xl mb-4">
+              <p className="text-gray-500 text-[14px] mb-4">
                 Pending Requests
               </p>
 
-              <h2 className="text-3xl font-bold text-[#6366f1]">
+              <h2 className="text-xl font-bold text-[#6366f1]">
                 {pendingRequests.length}
               </h2>
 
@@ -171,11 +171,11 @@ export default function Requests() {
 
             <div>
 
-              <p className="text-gray-500 text-xl mb-4">
+              <p className="text-gray-500 text-[14px] mb-4">
                 Accepted
               </p>
 
-              <h2 className="text-3xl font-bold text-[#16a34a]">
+              <h2 className="text-xl font-bold text-[#16a34a]">
                 {acceptedRequests.length}
               </h2>
 
@@ -192,11 +192,11 @@ export default function Requests() {
 
             <div>
 
-              <p className="text-gray-500 text-xl mb-4">
+              <p className="text-gray-500 text-[14px] mb-4">
                 Rejected
               </p>
 
-              <h2 className="text-3xl font-bold text-red-500">
+              <h2 className="text-xl font-bold text-red-500">
                 {rejectedRequests.length}
               </h2>
 
@@ -215,7 +215,7 @@ export default function Requests() {
 
           <button
             onClick={() => setActiveTab("pending")}
-            className={`pb-5 text-xl font-semibold ${
+            className={`pb-5 text-[16px] font-semibold ${
               activeTab === "pending"
                 ? "text-[#6366f1] border-b-4 border-[#6366f1]"
                 : "text-gray-500"
@@ -225,53 +225,27 @@ export default function Requests() {
           </button>
 
           <button
-            onClick={() =>
-              updateRequestStatus(
-                request._id,
-                "accepted"
-              ) 
-            }
-            className="
-              bg-green-500
-              hover:bg-green-600
-               transition
-              text-white
-              px-7
-              py-5
-              rounded-2xl
-              text-xl
-              font-semibold
-            "
+            onClick={() => setActiveTab("accepted")}
+            className={`pb-5 text-[16px] font-semibold ${
+              activeTab === "accepted"
+                ? "text-[#16a34a] border-b-4 border-[#16a34a]"
+                : "text-gray-500"
+            }`}
           >
-
-            ✓ Accept
-
+            Accepted ({acceptedRequests.length})
           </button>
 
           <button
-            onClick={() =>
-              updateRequestStatus(
-                request._id,
-                "rejected"
-              )
-            }
-            className="
-              border-2
-              border-red-400
-              text-red-500
-              hover:bg-red-50
-              transition
-              px-7
-              py-5
-              rounded-2xl
-              text-xl
-              font-semibold
-            "
-          >   
-
-            ✕ Reject
-
+            onClick={() => setActiveTab("rejected")}
+            className={`pb-5 text-[16px] font-semibold ${
+              activeTab === "rejected"
+                ? "text-red-500 border-b-4 border-red-500"
+                : "text-gray-500"
+            }`}
+          >
+            Rejected ({rejectedRequests.length})
           </button>
+
         </div>
 
         {/* Request Card */}
@@ -313,7 +287,7 @@ export default function Requests() {
                       justify-center
                       text-white
                       font-bold
-                      text-2xl
+                      text-xl
                     ">
 
                       {request.rider?.name
@@ -325,7 +299,7 @@ export default function Requests() {
                     <div>
 
                       <h2 className="
-                        text-2xl
+                        text-xl
                         font-bold
                         text-[#1e293b]
                       ">
@@ -470,6 +444,12 @@ export default function Requests() {
                   ">
 
                     <button
+                      onClick={() =>
+                        updateRequestStatus(
+                          request._id,
+                          "accepted"
+                        )
+                      }
                       className="
                         bg-green-500
                         hover:bg-green-600
@@ -477,7 +457,7 @@ export default function Requests() {
                         text-white
                         px-7
                         py-5
-                        rounded-2xl
+                        rounded-xl
                         text-xl
                         font-semibold
                       "
@@ -488,6 +468,12 @@ export default function Requests() {
                     </button>
 
                     <button
+                      onClick={() =>
+                        updateRequestStatus(
+                          request._id,
+                          "rejected"
+                        )
+                      }
                       className="
                         border-2
                         border-red-400
@@ -496,15 +482,15 @@ export default function Requests() {
                         transition
                         px-7
                         py-5
-                        rounded-2xl
+                        rounded-xl
                         text-xl
                         font-semibold
-                      "
+                      "   
                     >
 
                       ✕ Reject
 
-                    </button>
+                    </button> 
 
                   </div>
 
