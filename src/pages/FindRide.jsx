@@ -224,13 +224,12 @@ export default function FindRide() {
                 ride.time === time;
 
               return (
-                ride.driver?._id !==
-                  user._id &&
-                ride.status ===
-                  "available" &&
+                ride.driver?._id !== user._id &&
+                ride.status === "available" &&
+                ride.isAvailableToday === true &&
                 matchFrom &&
                 matchTo &&
-                matchTime
+                matchTime   
               );
 
             })
@@ -274,9 +273,7 @@ export default function FindRide() {
 
                         <span className="font-medium text-[#1e293b]">
 
-                          {ride.from}
-                          {" → "}
-                          {ride.to}
+                          {ride.from?.split(",")[0]} → {ride.to?.split(",")[0]}
 
                         </span>
 

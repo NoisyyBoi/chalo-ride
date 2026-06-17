@@ -32,6 +32,11 @@ const complaintSchema =
         required: true,
       },
 
+      issueType: {
+        type: String,
+        required: true,
+      },
+
       status: {
         type: String,
 

@@ -4,6 +4,8 @@ import {
   registerUser,
   loginUser,
   updateProfile,
+  forgotPassword,
+  resetPassword,
 } from "../controllers/authController.js";
 
 import upload from "../middleware/uploadMiddleware.js";
@@ -25,5 +27,16 @@ router.put(
   "/profile/:id",
   updateProfile
 );
+
+router.post(
+  "/forgot-password",
+  forgotPassword
+);
+
+router.post(
+  "/reset-password/:token",
+  resetPassword
+);
+
 
 export default router;

@@ -4,270 +4,785 @@ import axios from "axios";
 
 import Navbar from "../components/Navbar";
 
+import Footer from "../components/Footer";
+
+import toast, {
+Toaster
+} from "react-hot-toast";
+
 export default function RaiseComplaint() {
 
-  const [users, setUsers] =
-    useState([]);
+const [users,setUsers]=useState([]);
 
-  const [formData, setFormData] =
-    useState({
+const [errors,setErrors]=useState({});
 
-      title: "",
+const currentUser=
+JSON.parse(
+localStorage.getItem("user")
+);
 
-      description: "",
+const [formData,setFormData]=
+useState({
 
-      reportedBy: "",
+title:"",
 
-      against: "",
+description:"",
 
-    });
+reportedBy:
+currentUser?._id || "",
 
-  // ================= FETCH USERS =================
-  useEffect(() => {
+against:"",
 
-    fetchUsers();
+issueType:""
 
-  }, []);
+});
 
-  const fetchUsers = async () => {
+const complaintTypes=[
 
-    try {
+"Unsafe Driving",
 
-      const res =
-        await axios.get(
-          "http://localhost:5000/api/admin/users"
-        );
+"Repeated Ride Cancellation",
 
-      setUsers(
-        res.data
-      );
+"Abusive Behaviour",
 
-    } catch (error) {
+"Harassment",
 
-      console.log(error);
+"Inappropriate Language",
 
-    }
+"Discrimination",
 
-  };
+"Payment Fraud",
 
+"Vehicle Condition",
 
-  // ================= HANDLE CHANGE =================
-  const handleChange =
-    (e) => {
+"Fake Identity",
 
-      setFormData({
+"Other"
 
-        ...formData,
+];
 
-        [e.target.name]:
-          e.target.value,
+useEffect(()=>{
 
-      });
+fetchUsers();
 
-    };
+},[]);
 
+const fetchUsers=
+async()=>{
 
-  // ================= SUBMIT =================
-  const handleSubmit =
-    async (e) => {
+try{
 
-      e.preventDefault();
+const res=
+await axios.get(
+"http://localhost:5000/api/admin/users"
+);
 
-      try {
+setUsers(
 
-        await axios.post(
-          "http://localhost:5000/api/complaints/create",
+res.data.filter(
+u=>
+u._id !==
+currentUser?._id
+)
 
-          formData
-        );
+);
 
-        alert(
-          "Complaint submitted successfully"
-        );
+}
 
-        setFormData({
+catch{
 
-          title: "",
+toast.error(
+"Unable to load users"
+);
 
-          description: "",
+}
 
-          reportedBy: "",
+};
 
-          against: "",
+const handleChange=
+(e)=>{
 
-        });
+setFormData({
 
-      } catch (error) {
+...formData,
 
-        console.log(error);
+[e.target.name]:
+e.target.value
 
-      }
+});
 
-    };
+setErrors({
 
+...errors,
 
-  return (
+[e.target.name]:
+""
 
-    <div className="min-h-screen bg-[#f5f7fb]">
+});
 
-      <Navbar />
+};
 
-      <div className="max-w-[800px] mx-auto py-12 px-6">
+const validate=()=>{
 
-        <div className="bg-white rounded-[32px] border border-[#e2e8f0] p-10">
+let temp={};
 
-          <h1 className="text-3xl font-bold text-[#1e293b] mb-8">
+if(
+!formData.title.trim()
+){
 
-            Raise Complaint
+temp.title=
+"Enter complaint title";
 
-          </h1>
+}
 
+if(
+!formData.description.trim()
+){
 
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-6"
-          >
+temp.description=
+"Description required";
 
-            {/* TITLE */}
-            <div>
+}
 
-              <label className="block mb-2 font-semibold text-[#1e293b]">
+if(
+!formData.against
+){
 
-                Complaint Title
+temp.against=
+"Select user";
 
-              </label>
+}
 
-              <input
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-                placeholder="Enter complaint title"
-                className="w-full border border-[#e2e8f0] rounded-2xl px-5 py-4 outline-none"
-                required
-              />
+if(
+!formData.issueType
+){
 
-            </div>
+temp.issueType=
+"Select complaint type";
 
+}
 
-            {/* DESCRIPTION */}
-            <div>
+setErrors(
+temp
+);
 
-              <label className="block mb-2 font-semibold text-[#1e293b]">
+return Object.keys(
+temp
+).length===0;
 
-                Description
+};
 
-              </label>
+const handleSubmit=
+async(
+e
+)=>{
 
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-                placeholder="Enter complaint description"
-                rows="5"
-                className="w-full border border-[#e2e8f0] rounded-2xl px-5 py-4 outline-none resize-none"
-                required
-              />
+e.preventDefault();
 
-            </div>
+if(
+!validate()
+){
 
+toast.error(
+"Please fill all fields"
+);
 
-            {/* REPORTED BY */}
-            <div>
+return;
 
-              <label className="block mb-2 font-semibold text-[#1e293b]">
+}
 
-                Reported By
+try{
 
-              </label>
+await axios.post(
 
-              <select
-                name="reportedBy"
-                value={formData.reportedBy}
-                onChange={handleChange}
-                className="w-full border border-[#e2e8f0] rounded-2xl px-5 py-4 outline-none"
-                required
-              >
+"http://localhost:5000/api/complaints/create",
 
-                <option value="">
-                  Select User
-                </option>
+formData
 
-                {users.map((user) => (
+);
 
-                  <option
-                    key={user._id}
-                    value={user._id}
-                  >
+toast.success(
+"Complaint submitted"
+);
 
-                    {user.name}
+setFormData({
 
-                  </option>
+title:"",
 
-                ))}
+description:"",
 
-              </select>
+reportedBy:
+currentUser?._id,
 
-            </div>
+against:"",
 
+issueType:""
 
-            {/* AGAINST */}
-            <div>
+});
 
-              <label className="block mb-2 font-semibold text-[#1e293b]">
+}
 
-                Complaint Against
+catch{
 
-              </label>
+toast.error(
+"Submission failed"
+);
 
-              <select
-                name="against"
-                value={formData.against}
-                onChange={handleChange}
-                className="w-full border border-[#e2e8f0] rounded-2xl px-5 py-4 outline-none"
-                required
-              >
+}
 
-                <option value="">
-                  Select User
-                </option>
+};
 
-                {users.map((user) => (
+return(
 
-                  <option
-                    key={user._id}
-                    value={user._id}
-                  >
+<>
 
-                    {user.name}
+<Navbar/>
 
-                  </option>
+<div
+className="
+min-h-screen
 
-                ))}
+bg-gradient-to-br
 
-              </select>
+from-[#f8f8ff]
 
-            </div>
+via-[#ffffff]
 
+to-[#eef2ff]
 
-            {/* BUTTON */}
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white py-4 rounded-2xl font-semibold text-lg"
-            >
+relative
 
-              Submit Complaint
+overflow-hidden
+"
+>
 
-            </button>
+<Toaster
 
-          </form>
+position="top-right"
 
-        </div>
+toastOptions={{
 
-      </div>
+duration:3000,
 
-    </div>
+style:{
 
-  );
+fontSize:"12px",
+
+borderRadius:"18px"
+
+}
+
+}}
+
+/>
+
+<div
+className="
+absolute
+
+left-[-90px]
+
+top-[180px]
+
+w-[300px]
+
+h-[300px]
+
+bg-indigo-300/20
+
+blur-3xl
+
+rounded-full
+
+animate-pulse
+"
+/>
+
+<div
+className="
+absolute
+
+right-[-90px]
+
+bottom-[150px]
+
+w-[250px]
+
+h-[250px]
+
+bg-purple-300/20
+
+blur-3xl
+
+rounded-full
+
+animate-pulse
+"
+/>
+
+<div
+className="
+max-w-[850px]
+
+mx-auto
+
+px-6
+
+py-14
+"
+>
+
+<div
+className="
+bg-white/90
+
+backdrop-blur-xl
+
+rounded-[36px]
+
+border
+
+border-indigo-100
+
+p-10
+
+shadow-[0_30px_80px_rgba(99,102,241,.10)]
+
+hover:-translate-y-1
+
+duration-700
+"
+>
+
+<div className="text-center mb-10">
+
+<div
+className="
+inline-flex
+
+items-center
+
+gap-3
+
+bg-gradient-to-r
+
+from-indigo-500
+
+to-purple-500
+
+px-8
+
+py-4
+
+rounded-[24px]
+
+shadow-xl
+
+text-white
+"
+>
+
+<span>
+
+⚠
+
+</span>
+
+<h1
+className="
+text-[14px]
+
+font-black
+"
+>
+
+RAISE A COMPLAINT
+
+</h1>
+
+</div>
+
+<p
+className="
+text-[12px]
+
+text-slate-500
+
+mt-4
+"
+>
+
+Help us improve rider safety.
+
+</p>
+
+</div>
+
+<form
+onSubmit={
+handleSubmit
+}
+className="
+space-y-6
+"
+>
+
+<div>
+
+<label
+className="
+text-[12px]
+
+font-bold
+"
+>
+
+Reported By
+
+</label>
+
+<input
+
+disabled
+
+value={
+currentUser?.name ||
+"Guest"
+}
+
+className="
+w-full
+
+mt-2
+
+p-4
+
+rounded-xl
+
+bg-gray-100
+
+text-[12px]
+"
+/>
+
+</div>
+
+<div>
+
+<label
+className="
+text-[12px]
+
+font-bold
+"
+>
+
+Complaint Against
+
+</label>
+
+<select
+
+name="against"
+
+value={
+formData.against
+}
+
+onChange={
+handleChange
+}
+
+className="
+w-full
+
+mt-2
+
+p-4
+
+rounded-xl
+
+border
+
+text-[12px]
+"
+>
+
+<option value="">
+
+Select User
+
+</option>
+
+{
+
+users.map(
+u=>(
+
+<option
+key={
+u._id
+}
+value={
+u._id
+}
+>
+
+{
+u.name
+}
+
+</option>
+
+)
+
+)
+
+}
+
+</select>
+
+<p className="text-red-500 text-[11px]">
+
+{
+errors.against
+}
+
+</p>
+
+</div>
+
+<div>
+
+<label
+className="
+text-[12px]
+
+font-bold
+"
+>
+
+Issue Type
+
+</label>
+
+<select
+
+name="issueType"
+
+value={
+formData.issueType
+}
+
+onChange={
+handleChange
+}
+
+className="
+w-full
+
+mt-2
+
+p-4
+
+rounded-xl
+
+border
+
+text-[12px]
+"
+>
+
+<option value="">
+
+Select Issue
+
+</option>
+
+{
+
+complaintTypes.map(
+x=>(
+
+<option
+key={x}
+>
+
+{x}
+
+</option>
+
+)
+
+)
+
+}
+
+</select>
+
+<p className="text-red-500 text-[11px]">
+
+{
+errors.issueType
+}
+
+</p>
+
+</div>
+
+<div>
+
+<input
+
+name="title"
+
+placeholder="Complaint Title"
+
+value={
+formData.title
+}
+
+onChange={
+handleChange
+}
+
+className="
+w-full
+
+p-4
+
+rounded-xl
+
+border
+
+text-[12px]
+"
+/>
+
+<p className="text-red-500 text-[11px]">
+
+{
+errors.title
+}
+
+</p>
+
+</div>
+
+<div>
+
+<textarea
+
+rows="5"
+
+name="description"
+
+placeholder="Explain issue"
+
+value={
+formData.description
+}
+
+onChange={
+handleChange
+}
+
+className="
+w-full
+
+rounded-xl
+
+border
+
+p-4
+
+text-[12px]
+"
+/>
+
+<p className="text-red-500 text-[11px]">
+
+{
+errors.description
+}
+
+</p>
+
+</div>
+
+<div
+className="
+bg-red-50
+
+rounded-xl
+
+p-5
+"
+>
+
+<p
+className="
+text-[12px]
+
+text-red-700
+"
+>
+
+Critical complaints may lead to review and account action.
+
+</p>
+
+</div>
+
+<button
+
+type="submit"
+
+className="
+w-full
+
+py-5
+
+rounded-[24px]
+
+bg-gradient-to-r
+
+from-indigo-500
+
+via-purple-500
+
+to-pink-500
+
+text-white
+
+text-[12px]
+
+font-black
+
+hover:scale-[1.02]
+
+duration-500
+
+shadow-xl
+"
+>
+
+Submit Complaint
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<Footer/>
+
+</>
+
+);
 
 }

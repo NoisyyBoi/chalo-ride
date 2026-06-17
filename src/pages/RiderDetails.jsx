@@ -70,7 +70,7 @@ export default function RiderDetails() {
   }
 
   const raiseAlert = () => {
-    alert("Alert raised successfully");
+    toast.success("Alert raised successfully");
   };
 
   const suspendRider = async () => {
@@ -80,7 +80,7 @@ export default function RiderDetails() {
         `/admin/suspend/${ride.driver._id}`
       );  
 
-      alert("Rider suspended");
+      toast.error("Rider suspended");
 
     } catch (error) {
 

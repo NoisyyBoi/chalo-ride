@@ -31,6 +31,11 @@ const rideSchema =
         type: String,
       },
 
+      mileage: {
+        type: Number,
+        default: 0,
+      },
+
       seats: {
         type: Number,
         default: 1,
@@ -64,6 +69,22 @@ const rideSchema =
       unavailableDate: {
         type: String,
         default: "",
+      },
+
+      pickupLat: {
+        type: Number,
+      },
+
+      pickupLng: {
+        type: Number,
+      },  
+
+      destinationLat: {
+        type: Number,
+      },
+
+      destinationLng: {
+        type: Number,
       },
 
     },

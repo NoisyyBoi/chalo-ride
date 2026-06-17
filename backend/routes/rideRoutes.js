@@ -1,5 +1,6 @@
 import express from "express";
 import Ride from "../models/Ride.js";
+import Request from "../models/Request.js";
 
 import {
   createRide,
@@ -89,6 +90,16 @@ router.put(
       ride.status = "completed";
 
       await ride.save();
+
+      await Request.updateMany(
+        {
+          ride: ride._id,
+          status: "accepted",
+        },
+        {
+          status: "completed",
+        }
+      );
 
       res.json({
         message:

@@ -3,6 +3,8 @@ import API from "../api";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { toast } from "react-toastify";
+
 
 import {
   FiMapPin,
@@ -83,6 +85,9 @@ export default function OfferRide() {
   const [distance, setDistance] =
     useState("");
 
+  const [estimatedFare, setEstimatedFare] =
+    useState(0);
+
   const [seats, setSeats] =
     useState(2);
 
@@ -97,6 +102,22 @@ export default function OfferRide() {
     "Saturday",
     "Sunday",
   ];
+
+
+  const [pickupCoords, setPickupCoords] =
+    useState(null);
+
+  const [destinationCoords, setDestinationCoords] =
+    useState(null);
+
+  const [locationOptions, setLocationOptions] =
+    useState([]);
+
+  const [fromSuggestions, setFromSuggestions] =
+    useState([]);
+
+  const [toSuggestions, setToSuggestions] =
+    useState([]);
 
   // TOGGLE DAY
   const toggleDay = (day) => {
@@ -155,13 +176,138 @@ export default function OfferRide() {
 
   };
 
+  const geocodeLocation = async (place) => {
+
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&q=${query}&countrycodes=in&limit=5`
+
+    );
+
+    const data = await res.json();
+
+    if (data.length > 0) {
+
+      return {
+        lat: parseFloat(data[0].lat),
+        lng: parseFloat(data[0].lon),
+      };
+
+    }
+
+    return null;
+  };
+
+  const searchLocations = async (input) => {
+
+    if (!input) return;
+
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&q=${input}`
+    );
+
+    const data = await res.json();
+
+    setLocationOptions(
+      data.map((place) => ({
+        label: place.display_name,
+        value: place.display_name,
+        lat: place.lat,
+        lon: place.lon,
+      }))
+    );
+  };
+
+  const fetchLocations = async (
+    query,
+    setSuggestions
+  ) => {
+
+    if (!query || query.length < 3) {
+
+      setSuggestions([]);
+
+      return;
+
+    }
+
+    try {
+
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=5`
+      );
+
+      const data = await res.json();
+
+      setSuggestions(data);
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+  };
+
+  const calculateDistance = async (
+    pickup,
+    destination
+  ) => {
+
+    try {
+
+      const res = await fetch(
+        `https://router.project-osrm.org/route/v1/driving/${pickup.lng},${pickup.lat};${destination.lng},${destination.lat}?overview=false`
+      );
+
+      const data =
+        await res.json();
+
+      if (
+        data.routes &&
+        data.routes.length > 0
+      ) {
+
+        const distanceKm =
+          (
+            data.routes[0].distance /
+            1000
+          ).toFixed(1);
+
+        setDistance(
+          distanceKm
+        );  
+
+        if (mileage) {
+
+          const fare =
+            Math.round(
+              (
+                (distanceKm / mileage) *
+                petrolPrice
+              ) + 15
+            );
+
+          setEstimatedFare(fare);
+
+        }
+
+      }
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+  };
+
 
   const publishRide =
     async () => {
 
       if (!user?.isVerified) {
 
-       alert(
+       toast.error(
          "Please complete verification before offering a ride"
         );
 
@@ -171,33 +317,56 @@ export default function OfferRide() {
 
       try {
 
+        const pickup = pickupCoords;
+        const destination = destinationCoords;
+
+        if (!pickup || !destination) {
+
+          toast.error(
+            "Location not found"
+          );
+
+          return;
+
+        }
+
         await API.post(
           "/rides",
           {
             driver: user?._id,
 
             from,
-
             to,
 
+            pickupLat:
+              pickup.lat,
+
+            pickupLng:
+              pickup.lng,
+
+            destinationLat:
+              destination.lat,
+
+            destinationLng:
+              destination.lng,
+
             date,
-
-            time, 
-
+            time,
             vehicle,
-
             seats,
+            mileage,
 
             fare:
               Math.round(
-                ((distance / mileage) * petrolPrice ) + 15
+                ((distance / mileage) *
+                  petrolPrice) + 15
               ),
 
             distance,
           }
         );
 
-        alert("Ride Published");
+        toast.success("Ride Published");
 
       } catch (error) {
 
@@ -206,7 +375,6 @@ export default function OfferRide() {
       }
 
     };
-
 
   return (
 
@@ -280,15 +448,73 @@ export default function OfferRide() {
 
                 </label>
 
+                <div className="relative">
+
                 <input
                   type="text"
-                  placeholder="Starting Point"
+                  placeholder="Enter pickup location"
                   value={from}
-                  onChange={(e) =>
-                    setFrom(e.target.value)
-                  }
+                  onChange={(e) => {
+
+                    setFrom(e.target.value);
+
+                    fetchLocations(
+                      e.target.value,
+                      setFromSuggestions
+                    );
+
+                  }}
                   className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-5 outline-none"
                 />
+
+                {fromSuggestions.length > 0 && (
+
+                  <div className="absolute w-full bg-white border rounded-2xl mt-2 shadow-lg z-50 max-h-60 overflow-y-auto">
+
+                    {fromSuggestions.map((place) => (
+
+                      <div
+                        key={place.place_id}
+                        onClick={() => {
+
+                          setFrom(
+                            place.display_name
+                              .split(",")[0]
+                          );
+
+                          const pickup = {
+                            lat: parseFloat(place.lat),
+                            lng: parseFloat(place.lon),
+                          };
+
+                          setPickupCoords(pickup);
+
+                          if (destinationCoords) {
+
+                          calculateDistance(
+                            pickup,
+                            destinationCoords
+                          );
+
+                        }
+
+                        setFromSuggestions([]);
+
+                        }}
+                        className="p-4 hover:bg-gray-100 cursor-pointer text-sm"
+                      >
+
+                        {place.display_name}
+
+                      </div>
+
+                    ))}
+
+                  </div>
+
+                )}
+
+              </div>
 
               </div>
 
@@ -302,37 +528,96 @@ export default function OfferRide() {
 
                 </label>
 
-                <input
-                  type="text"
-                  placeholder="Destination Point"
-                  value={to}
-                  onChange={(e) =>
-                    setTo(e.target.value)
-                  }
-                  className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-5 outline-none "
-                />
+                <div className="relative">
+
+                  <input
+                    type="text"
+                    placeholder="Enter destination"
+                    value={to}    
+                    onChange={(e) => {
+
+                      setTo(e.target.value);
+
+                      fetchLocations(
+                        e.target.value,
+                        setToSuggestions
+                      );
+
+                    }}
+                    className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-5 outline-none"
+                  />
+
+                  {toSuggestions.length > 0 && (
+
+                    <div className="absolute w-full bg-white border rounded-2xl mt-2 shadow-lg z-50 max-h-60 overflow-y-auto">
+
+                      {toSuggestions.map((place) => (
+
+                        <div
+                          key={place.place_id}
+                          onClick={() => {
+
+                            setTo(
+                              place.display_name
+                                .split(",")[0]
+                            );
+
+                            const destination = {
+                              lat: parseFloat(place.lat),
+                              lng: parseFloat(place.lon),
+                            };
+
+                            setDestinationCoords(
+                              destination
+                            );
+
+                            if (pickupCoords) {
+
+                              calculateDistance(
+                                pickupCoords,
+                                destination
+                              );
+
+                            }
+
+                            setToSuggestions([]);
+
+                          }}
+                          className="p-4 hover:bg-gray-100 cursor-pointer text-sm"
+                        >
+
+                          {place.display_name}
+
+                        </div>
+
+                      ))}
+
+                    </div>
+
+                  )}
+
+                </div>
 
               </div>
 
               <div>
 
-                <label className="font-semibold mb-2 flex items-center gap-2">
-
-                  Distance (KM)
-
+                <label className="font-semibold mb-2 block">
+                  Distance
                 </label>
 
                 <input
-                  type="number"
-                  placeholder="Enter Distance"
-                  value={distance}
-                  onChange={(e) =>
-                    setDistance(e.target.value)
+                  type="text"
+                  value={
+                    distance
+                      ? `${distance} km`
+                      : "Calculated automatically"
                   }
-                  className="w-full bg-[#f8fafc] border rounded-2xl px-7 py-5 outline-none"
+                  readOnly
+                  className="w-full bg-gray-100 border rounded-2xl px-7 py-5"
                 />
 
-              </div>
+            </div>
 
             </div>
 
@@ -543,15 +828,21 @@ export default function OfferRide() {
                 className="bg-[#f8fafc] border rounded-2xl px-7 py-5 outline-none"
               />
 
-              <input
-                type="number"
-                placeholder="Mileage"
-                value={mileage}
-                onChange={(e) =>
-                  setMileage(e.target.value)
-                }
-                className="bg-[#f8fafc] border rounded-2xl px-7 py-5 outline-none"
-              />
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Vehicle Mileage (km/L)
+                </label>
+
+                <input
+                  type="number"
+                  placeholder="Example: 45"
+                  value={mileage}
+                  onChange={(e) =>
+                    setMileage(e.target.value)
+                  } 
+                  className="w-full border rounded-lg p-3"
+                />
+              </div>
 
             </div>
 

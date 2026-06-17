@@ -9,23 +9,31 @@ export const createRide =
 
       const ride =
         await Ride.create({
-          driver:
-            req.body.driver,
+          driver: req.body.driver,
 
-          from:
-            req.body.from,
+          from: req.body.from,
+          to: req.body.to,
 
-          to:
-            req.body.to,
+          pickupLat:
+            req.body.pickupLat,
 
-          date:
-            req.body.date,
+          pickupLng:
+            req.body.pickupLng,
 
-          time:
-            req.body.time,
+          destinationLat:
+            req.body.destinationLat,
+
+          destinationLng:
+            req.body.destinationLng,
+
+          date: req.body.date,
+          time: req.body.time,
 
           vehicle:
             req.body.vehicle,
+
+          mileage:
+            req.body.mileage,
 
           seats:
             req.body.seats,
@@ -33,8 +41,9 @@ export const createRide =
           fare:
             req.body.fare,
 
-          distance: 
+          distance:
             req.body.distance,
+
         });
 
       res.status(201).json(

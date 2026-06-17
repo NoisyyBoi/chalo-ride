@@ -1,13 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import API from "../api/axios";
 
+
 import {
   FiShield,
   FiCheckCircle,
   FiUsers,
 } from "react-icons/fi";
 
-import { FcGoogle } from "react-icons/fc";
 
 import { useForm } from "react-hook-form";
 
@@ -62,28 +62,6 @@ export default function Login() {
         "Login failed"
       );
     }
-  };
-
-  // GOOGLE LOGIN
-  const handleGoogleLogin = () => {
-
-    /*
-      FUTURE GOOGLE AUTH FLOW
-
-      Firebase/Auth0/Google OAuth
-
-      Steps:
-      1. Open Google popup
-      2. Select Google account
-      3. Check @kristujayanti.com
-      4. Check registered user
-      5. Check admin approved
-      6. Allow login
-    */
-
-    toast.success(
-      "Google authentication integration ready"
-    );
   };
 
   return (
@@ -391,24 +369,24 @@ export default function Login() {
             </div>
 
             {/* FORGOT PASSWORD */}
-            <div className="
-              flex
-              justify-end
-              mt-5
-            ">
+<div className="
+  flex
+  justify-end
+  mt-5
+">
 
-              <button
-                type="button"
-                className="
-                  text-indigo-500
-                  font-semibold
-                  hover:underline
-                "
-              >
-                Forgot Password?
-              </button>
+  <Link
+    to="/forgot-password"
+    className="
+      text-indigo-500
+      font-semibold
+      hover:underline
+    "
+  >
+    Forgot Password?
+  </Link>
 
-            </div>
+</div>
 
             {/* LOGIN BUTTON */}
             <button
@@ -431,65 +409,12 @@ export default function Login() {
               Login
             </button>
 
-            {/* DIVIDER */}
-            <div className="
-              flex
-              items-center
-              gap-8
-              my-10
-            ">
-
-              <div className="
-                flex-1
-                h-[1px]
-                bg-slate-200
-              "></div>
-
-              <span className="text-slate-400">
-                OR
-              </span>
-
-              <div className="
-                flex-1
-                h-[1px]
-                bg-slate-200
-              "></div>
-
-            </div>
-
-            {/* GOOGLE LOGIN */}
-            <button
-              type="button"
-              onClick={handleGoogleLogin}
-              className="
-                w-full
-                h-16
-                rounded-2xl
-                border
-                border-slate-200
-                flex
-                items-center
-                justify-center
-                gap-4
-                text-[14px]
-                font-semibold
-                hover:bg-slate-50
-                duration-300
-              "
-            >
-
-              <FcGoogle className="text-xl" />
-
-              Continue with Google
-
-            </button>
-
             {/* SECURITY NOTE */}
             <div className="
               mt-8
               text-slate-500
             ">
-              🔒 Only verified college accounts can login
+              🔒 College accounts can login
             </div>
 
             {/* REGISTER */}

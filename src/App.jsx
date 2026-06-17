@@ -4,6 +4,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import FindRide from "./pages/FindRide";
 import OfferRide from "./pages/OfferRide";
 import ActiveRide from "./pages/ActiveRide";
@@ -14,16 +16,21 @@ import Profile from "./pages/Profile";
 import Requests from "./pages/Requests";
 import RiderDetails from "./pages/RiderDetails";
 import RaiseComplaint from "./pages/RaiseComplaint";
+import Contact from "./pages/Contact";
+import SafetyGuidelines from "./pages/SafetyGuidelines";
 
 import AdminOverview from "./pages/AdminOverview";
 import AdminVerifications from "./pages/AdminVerifications";
 import AdminRiders from "./pages/AdminRiders";
 import AdminComplaints from "./pages/AdminComplaints";
 import AdminEarnings from "./pages/AdminEarnings";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   return (
     <BrowserRouter>
+
+           <Toaster position="top-right" />
 
       <Routes>
 
@@ -42,6 +49,16 @@ export default function App() {
         <Route path="/legal" element={<Legal />} />
 
         <Route
+          path="/contact"
+          element={<Contact />}
+        />
+
+        <Route
+          path="/safety"
+          element={<SafetyGuidelines />}
+        />
+
+        <Route
           path="/profile"
           element={
             <ProtectedRoute>
@@ -58,7 +75,16 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+         
+         <Route
+        path="/forgot-password"
+        element={<ForgotPassword />}
+      />
 
+      <Route
+        path="/reset-password/:token"
+        element={<ResetPassword />}
+      />
         <Route
           path="/activeride"
           element={

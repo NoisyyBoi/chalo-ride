@@ -8,6 +8,7 @@ import adminRoutes from "./routes/adminRoutes.js";
 import rideRoutes from "./routes/rideRoutes.js";
 import complaintRoutes from "./routes/complaintRoutes.js";
 import requestRoutes from "./routes/requestRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 
 
 dotenv.config();
@@ -50,6 +51,11 @@ app.use(
 app.use(
   "/api/requests",
   requestRoutes
+);
+
+app.use(
+  "/api/reviews",
+  reviewRoutes
 );
 
 // MONGODB CONNECTION

@@ -2,6 +2,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import API from "../api";
+import L from "leaflet";
+import { toast } from "react-toastify";
 
 import {
   useEffect,
@@ -13,6 +15,7 @@ import {
   TileLayer,
   Marker,
   Popup,
+  Polyline,
 } from "react-leaflet";
 
 import {
@@ -22,6 +25,56 @@ import {
   FiShield,
   FiX,
 } from "react-icons/fi";
+
+
+import "leaflet-routing-machine";
+import { useMap } from "react-leaflet";
+
+function Routing({ start, end }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!start || !end) return;
+
+    const routingControl = L.Routing.control({
+      waypoints: [
+        L.latLng(start[0], start[1]),
+        L.latLng(end[0], end[1]),
+      ],
+      show: false,
+      addWaypoints: false,
+      draggableWaypoints: false,
+      fitSelectedRoutes: true,
+      showAlternatives: false,
+
+      lineOptions: {
+        styles: [
+          {
+            color: "#6366f1",
+            weight: 5,
+          },
+        ],  
+      },
+
+      createMarker: () => null,
+
+    }).addTo(map);
+
+    // Hide directions panel
+    const container =
+      routingControl.getContainer();
+
+    if (container) {
+      container.style.display = "none";
+    }
+
+    return () => {
+      map.removeControl(routingControl);
+    };
+  }, [map, start, end]);
+    
+  return null;
+}
 
 export default function ActiveRide() {
 
@@ -57,11 +110,13 @@ export default function ActiveRide() {
           res.data
         );
 
+        console.log(res.data);
+
       } catch (error) {
 
         console.log(error);
 
-        alert(
+        toast.error(
           "Failed to load active rides."
         );
 
@@ -85,23 +140,55 @@ export default function ActiveRide() {
 
   const openGoogleMaps = () => {
 
-    const location =
-      currentRide?.ride?.from;
+    const pickupLat =
+      currentRide?.ride?.pickupLat;
 
-    if (!location) {
+    const pickupLng =
+      currentRide?.ride?.pickupLng;
 
-      alert(
-        "Pickup location unavailable."
-      );
+    const destinationLat =
+      currentRide?.ride?.destinationLat;
+
+    const destinationLng =
+      currentRide?.ride?.destinationLng;
+
+    console.log({
+      pickupLat,
+      pickupLng,
+      destinationLat,
+      destinationLng,
+    });
+
+    if (
+      !pickupLat ||
+      !pickupLng ||
+      !destinationLat ||
+      !destinationLng
+    ) {
+
+      toast.error("Route unavailable");
 
       return;
-
     }
 
+    const url =
+      `https://www.google.com/maps/dir/?api=1` +
+      `&origin=${pickupPosition[0]},${pickupPosition[1]}` +
+      `&destination=${destinationPosition[0]},${destinationPosition[1]}` +
+      `&travelmode=driving`;
+
     window.open(
-      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`,
+      `https://www.google.com/maps/dir/?api=1&origin=${pickupPosition[0]},${pickupPosition[1]}&destination=${destinationPosition[0]},${destinationPosition[1]}&travelmode=driving`,
       "_blank"
     );
+
+    console.log("Current Ride:", currentRide);
+    console.log("Ride:", currentRide?.ride);
+
+    console.log("pickupLat:", currentRide?.ride?.pickupLat);
+    console.log("pickupLng:", currentRide?.ride?.pickupLng);
+    console.log("destinationLat:", currentRide?.ride?.destinationLat);
+    console.log("destinationLng:", currentRide?.ride?.destinationLng);
 
   };
 
@@ -112,7 +199,7 @@ export default function ActiveRide() {
 
     if (!phone) {
 
-      alert(
+      toast.error(
         "Passenger phone number unavailable."
       );
 
@@ -132,7 +219,7 @@ export default function ActiveRide() {
 
     if (!phone) {
 
-      alert(
+      toast.error(
         "Passenger phone number unavailable."
       );
 
@@ -154,7 +241,7 @@ export default function ActiveRide() {
 
     if (!confirmRide) return;
 
-    alert(
+    toast.success(
       "Ride Started Successfully"
     );
 
@@ -169,7 +256,7 @@ export default function ActiveRide() {
 
     if (!confirmCancel) return;
 
-    alert(
+    toast.error(
       "Ride Cancelled"
     );
 
@@ -187,7 +274,7 @@ export default function ActiveRide() {
 
       console.log("Response:", res.data);
 
-      alert("Ride ended");
+      toast.success("Ride ended");
 
       fetchActiveRides();
 
@@ -208,6 +295,47 @@ export default function ActiveRide() {
     }
 
   };  
+
+  const pickupPosition =
+    currentRide?.ride?.pickupLat &&
+    currentRide?.ride?.pickupLng
+      ? [
+          currentRide.ride.pickupLat,
+          currentRide.ride.pickupLng,
+        ] 
+      : null;
+
+  const destinationPosition =
+    currentRide?.ride?.destinationLat &&
+    currentRide?.ride?.destinationLng
+      ? [
+          currentRide.ride.destinationLat,
+          currentRide.ride.destinationLng,
+        ]
+      : null;
+
+  console.log("Current Ride:", currentRide);
+  console.log("Ride Data:", currentRide?.ride);
+
+  console.log(
+    "pickupLat:",
+    currentRide?.ride?.pickupLat
+  );
+
+  console.log(
+    "pickupLng:",
+    currentRide?.ride?.pickupLng
+  );
+
+  console.log(
+    "destinationLat:",
+    currentRide?.ride?.destinationLat
+  );
+
+  console.log(
+    "destinationLng:",
+    currentRide?.ride?.destinationLng
+  );
 
   if (!user) {
 
@@ -333,7 +461,7 @@ export default function ActiveRide() {
                   <div>
 
                     <h2 className="text-xl font-bold text-[#1e293b]">
-                      Navigate to Pickup
+                      Ride Route
                     </h2>
 
                     <p className="text-gray-500 text-[14px]">
@@ -352,31 +480,51 @@ export default function ActiveRide() {
 
               <div className="h-[500px] w-full">
 
-                <MapContainer
-                  center={[12.9716, 77.5946]}
-                  zoom={13}
-                  style={{
-                    height: "500px",
-                    width: "100%",
-                    zIndex: 1,
-                  }}
-                >
+                {pickupPosition && destinationPosition ? (
 
-                  <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-
-                  <Marker
-                    position={[12.9716, 77.5946]}
+                  <MapContainer
+                    center={pickupPosition}
+                    zoom={13}
+                    style={{
+                      height: "500px",
+                      width: "100%",
+                      zIndex: 1,
+                    }}
                   >
 
-                    <Popup>
-                      Pickup Location
-                    </Popup>
+                    <TileLayer
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
 
-                  </Marker>
+                    <Routing
+                      start={pickupPosition}
+                      end={destinationPosition}
+                    />
 
-                </MapContainer>
+                    <Marker position={pickupPosition}>
+                      <Popup>Pickup Location</Popup>
+                    </Marker>
+
+                    <Marker position={destinationPosition}>
+                      <Popup>Destination</Popup>
+                    </Marker>
+
+                    <Polyline
+                      positions={[
+                        pickupPosition,
+                        destinationPosition,
+                      ]}
+                    />
+
+                  </MapContainer>
+
+                ) : (
+
+                  <div className="h-[500px] flex items-center justify-center">
+                    Loading Map...
+                  </div>
+
+                )}
 
               </div>
 
@@ -384,7 +532,16 @@ export default function ActiveRide() {
 
                 <button
                   onClick={openGoogleMaps}
-                  className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white py-5 rounded-2xl text-xl font-semibold"
+                  className="
+                    w-full
+                    bg-gradient-to-r
+                    from-indigo-500
+                    to-purple-500
+                    text-white
+                    py-5
+                    rounded-xl
+                    font-semibold
+                    "
                 >
                   Open in Google Maps
                 </button>
@@ -461,7 +618,7 @@ export default function ActiveRide() {
 
               <div className="flex flex-col items-center text-center">
 
-                <div className="w-32 h-32 rounded-full bg-[#6366f1] flex items-center justify-center text-white text-xl font-bold mb-5">
+                <div className="w-32 h-32 rounded-full bg-[#6366f1] flex items-center justify-center text-white text-4xl font-bold mb-5">
 
                   {currentRide?.rider?.name?.charAt(0) || "P"}
 

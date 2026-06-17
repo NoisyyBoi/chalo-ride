@@ -125,17 +125,6 @@ export default function Footer() {
           ">
 
             <Link
-              to="/help"
-              className="
-                hover:text-white
-                duration-300
-                hover:translate-x-1
-              "
-            >
-              Help Center
-            </Link>
-
-            <Link
               to="/safety"
               className="
                 hover:text-white
